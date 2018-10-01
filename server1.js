@@ -27,8 +27,19 @@ app.use(methodOverride((request, response) => {
 
 app.set('view engine', 'ejs');
 
+app.get('/', getMeals);// <<<<<<<<<<<<<<<<<<< Jeff added
+app.get('/new-meal', meal);// <<<<<<<<<<<<<<<<<<< Jeff added
+
 app.get('/searches', search);
 app.post('/searches', searchFood);
+
+app.get('/meal', meal);// <<<<<<<<<<<<<<<<<<< Jeff added
+app.post('/meal', addMeal);// <<<<<<<<<<<<<<<<<<< Jeff added
+
+
+function meal(request, response) {// <<<<<<<<<<<<<<<<<<< Jeff added
+  response.render('pages/new-meal');
+}
 
 function search(request, response) {
   response.render('pages/search');
@@ -39,7 +50,7 @@ function handleError(err, res) {
 }
 
 function searchFood(request, response) {
-  console.log(request.body.search);
+  //console.log(request.body.search);
   const url = `https://api.nal.usda.gov/ndb/search/?format=json&q=${request.body.search}&ds=Standard%20Reference&sort=r&max=20&offset=0&api_key=${process.env.USDA_API_KEY}`;
 
   superagent.get(url)
@@ -49,7 +60,7 @@ function searchFood(request, response) {
 
         superagent.get(item_url)
           .then(content => {
-            console.log(content.body.foods[0].nutrients);
+            //console.log(content.body.foods[0].nutrients);
 
 
           });
@@ -67,3 +78,48 @@ function searchFood(request, response) {
 //}
 
 app.listen(PORT, () => console.log(`Listening on ${PORT}`));
+
+
+
+
+
+
+
+
+// WHAT JEFF IS ADDING:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+
+
+function getMeals(request, response) {
+
+  let SQL = `SELECT * FROM meals;`;
+
+  return client.query(SQL)
+    .then(results => response.render('index', {mealList: results.rows}))
+    .catch(error => {
+      response.render('pages/error', {errorMsg: error});
+    });
+
+}
+
+
+function addMeal(request) {
+
+  //let meal = new Meal(request.body.name, request.body.description, request.body.image_url);
+
+  let {name, description, image_url} = request.body;
+
+  let SQL = `INSERT INTO meals (name, description, image_url) VALUES ($1, $2, $3);`;
+  let values = [name, description, image_url];
+  console.log('VALUES:: ', values);
+
+  return client.query(SQL, values);
+
+}
+
+
+function Meal(name, description, image_url) {
+  this.name = name;
+  this.description = description;
+  this.image_url = image_url;
+
+}

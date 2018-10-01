@@ -3,29 +3,40 @@
 <html lang="en">
 
 <head>
-  <!-- <%- include('../layout/head') %> -->
+  <%- include('layout/head') %>
 </head>
 
 <body>
   
   <header>
+    <%- include('layout/nav') %>
     <h1>
       Nutri-Track
     </h1>
   </header>
+  <main>
 
-<main>
-  <nav>
-    <ul> 
 
-    <li><a href="....">Home</a></li>
-    <li><a href="....">Get Started</a></li>
-    <li><a href="....">About Us</a></li>
+    <form action="/new-meal" method="GET" >      
+      <button class="get-started-button" type="submit">Click here to get started!</button>
+    </form>
 
+
+    <h2>My Saved Meals</h2>
+
+    <ul class=saved-meals>
+      <li>
+        <% mealList.forEach( meal => { %>
+          <h3><%= meal.name %></h3>
+          <p><%= meal.description %></p>
+          <img src="<%=meal.img_url%>" alt="picture of meal" />
+        <% }) %>
+
+      </li>
     </ul>
 
-  </nav>
-</main>
+
+  </main>
 
 </body>
 

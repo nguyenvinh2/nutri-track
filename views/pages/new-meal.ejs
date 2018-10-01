@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+
+    
+
+
+
+  </head>
+  <body>
+    <nav>
+      <!-- Include ejs partial for nav bar  -->
+    </nav>
+    <main>
+      <h1>Meal Creator</h1>
+
+      <form action="/meal" method="POST" class="meal-form">
+
+        <input type="text" name="name" placeholder="Enter meal name" required />
+
+        <!-- possibly use a textarea for the description? -->
+        <input type="text" name="description" placeholder="Enter an optional meal description" />
+
+        <input type="text" name="image_url" placeholder="Enter optional image url" />
+
+        <button type="submit" class="create-meal-button">Create Meal</button>
+      </form>
+
+
+    </main>
+  </body>
+</html>

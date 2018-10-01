@@ -2,7 +2,7 @@
   "name": "nutri-track",
   "version": "1.0.0",
   "description": "Meal Nutrition Tracker",
-  "main": "server.js",
+  "main": "server1.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js"
