@@ -43,26 +43,46 @@ function searchFood(request, response) {
 
   superagent.get(url)
     .then(foodResponse => {
-      const foodList = foodResponse.body.list.item.forEach(food => {
+      const foodList = [];
+      const ingredientList = foodResponse.body.list.item.map(food => {
         const item_url = `https://api.nal.usda.gov/ndb/V2/reports?ndbno=${food.ndbno}&type=b&format=json&api_key=${process.env.USDA_API_KEY}`;
 
-        superagent.get(item_url)
-          .then(content => {
-            const ingredientList = content.body.foods[0].food.nutrients.forEach(ingredient => {
-              console.log(ingredient);
-            });
-          });
+        superagent.get(item_url).then(content => {
+          const calories = content.body.foods[0].food.nutrients[1].value;
+          const protein = content.body.foods[0].food.nutrients[3].value;
+          const fat = content.body.foods[0].food.nutrients[2].value;
+          const carbs = content.body.foods[0].food.nutrients[4].value;
+          const fiber = content.body.foods[0].food.nutrients[5].value;
+          const sugar = content.body.foods[0].food.nutrients[6].value;
+          const ingredientItem = new Ingredient(food.name, calories, fat, protein, carbs, fiber, sugar);
+          foodList.push(ingredientItem);
+          if (foodList.length === foodResponse.body.list.item.length) {
+            response.render('pages/result', { ingredients: foodList });
+          }
+        });
       });
     })
     .catch(error => handleError(error, response));
 }
 
-//function Ingredient(data {
-//  this.title = info.volumeInfo.title || 'Title Information Available';
-//  this.author = info.volumeInfo.authors || 'Author Information Unvailable';
-//  this.isbn = '';
-//  this.imgUrl = '';
-//  this.description = info.volumeInfo.description || 'Description Unavailable';
-//}
+function Ingredient(name, calories, fat, protein, carbs, fiber, sugar) {
+  this.name = name;
+  this.calories = calories;
+  this.fat = fat;
+  this.protein = protein;
+  this.carbs = carbs;
+  this.fiber = fiber;
+  this.sugar = sugar;
+}
+
+//Ingredient.prototype.addContent = function(calories, fat, protein, carbs, fiber, sugar) {
+//  this.calories = calories;
+//  this.fat = fat;
+//  this.protein = protein;
+//  this.carbs = carbs;
+//  this.fiber = fiber;
+//  this.sugar = sugar;
+//};
+
 
 app.listen(PORT, () => console.log(`Listening on ${PORT}`));

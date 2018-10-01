@@ -3,27 +3,22 @@
   <body>
     <h2>Results!</h2>
       <% let count = 0; %>
-      <% bookArr.forEach(book => { %>
-      <ul id="add-button">
-        <li><img src=<%= book.imgUrl%> ></li>
-        <li><%= book.title %></li>
-        <li>By: <%= book.author %></li>
-        <button class="button-id <%=count%>" type="submit">Add This Book!</button>
-      </ul>
+      <% ingredients.forEach(element => { %>
       <section class="create-view-container <%=count%>">
-        <form id="create-form" action="/add" method="post">
-          <input type="text" name="title" value="<%= book.title %>">
-          <input type="text" name="author" value="<%= book.author %>">
-          <textarea name="description" value="<%= book.description %>" wrap="hard"><%= book.description %></textarea>
-          <input type="text" name="isbn" value="<%= book.isbn %>">
-          <input type="text" name="imageurl" value="<%= book.imgUrl %>">
-          <input type="text" name="bookshelf" placeholder="Bookshelf Category">
-          <button class="create-view-container <%=count%>" type="submit">Save Book</button>
-          <button class="create-view-container <%=count%>" type="button">Hide Form</button>
+        <form id="add-ingredient" action="/put" method="post">
+          <ul>
+            <li>Ingredient: <%= element.name %></li>
+            <li>Calories (kcal): <%= element.calories %></li>
+            <li>Total Fat (g): <%= element.fat %></li>
+            <li>Protein (g): <%= element.protein %></li>
+            <li>Carbohydrates (g): <%= element.carbs %></li>
+            <li>Fiber (g): <%= element.fiber %></li>
+            <li>Sugars (g): <%= element.sugar %></li>
+          </ul>
         </form>
       </section>
       <%count ++; %>
-    <%})%>
+      <%})%>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script type="text/javascript" src="/js/app.js"></script>
   </body>
