@@ -2,16 +2,12 @@
 
 <html>
   <head>
-
-    
-
-
-
+      <%- include('../layout/head') %>
   </head>
   <body>
-    <nav>
-      <!-- Include ejs partial for nav bar  -->
-    </nav>
+    <header>
+      <%- include('../layout/nav') %>
+    </header>
     <main>
       <h1>Meal Creator</h1>
 
@@ -20,7 +16,7 @@
         <input type="text" name="name" placeholder="Enter meal name" required />
 
         <!-- possibly use a textarea for the description? -->
-        <input type="text" name="description" placeholder="Enter an optional meal description" />
+        <textarea type="text" name="description" placeholder="Enter an optional meal description" ></textarea>
 
         <input type="text" name="image_url" placeholder="Enter optional image url" />
 

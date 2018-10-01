@@ -110,7 +110,6 @@ function addMeal(request) {
 
   let SQL = `INSERT INTO meals (name, description, image_url) VALUES ($1, $2, $3);`;
   let values = [name, description, image_url];
-  console.log('VALUES:: ', values);
 
   return client.query(SQL, values);
 
