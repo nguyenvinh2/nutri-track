@@ -39,7 +39,6 @@ function handleError(err, res) {
 }
 
 function searchFood(request, response) {
-  console.log(request.body.search);
   const url = `https://api.nal.usda.gov/ndb/search/?format=json&q=${request.body.search}&ds=Standard%20Reference&sort=r&max=20&offset=0&api_key=${process.env.USDA_API_KEY}`;
 
   superagent.get(url)
@@ -49,9 +48,9 @@ function searchFood(request, response) {
 
         superagent.get(item_url)
           .then(content => {
-            console.log(content.body.foods[0].nutrients);
-
-
+            const ingredientList = content.body.foods[0].food.nutrients.forEach(ingredient => {
+              console.log(ingredient);
+            });
           });
       });
     })
