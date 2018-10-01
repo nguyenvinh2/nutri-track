@@ -28,7 +28,9 @@ app.use(methodOverride((request, response) => {
 app.set('view engine', 'ejs');
 
 app.get('/searches', search);
+
 app.post('/searches', searchFood);
+app.post('/add', addIngredient);
 
 function search(request, response) {
   response.render('pages/search');
@@ -75,14 +77,13 @@ function Ingredient(name, calories, fat, protein, carbs, fiber, sugar) {
   this.sugar = sugar;
 }
 
-//Ingredient.prototype.addContent = function(calories, fat, protein, carbs, fiber, sugar) {
-//  this.calories = calories;
-//  this.fat = fat;
-//  this.protein = protein;
-//  this.carbs = carbs;
-//  this.fiber = fiber;
-//  this.sugar = sugar;
-//};
-
+function addIngredient(request, response) {
+  let { ingredient, calories, fat, protein, carbs, fiber, sugar } = request.body;
+  let SQL = 'INSERT INTO ingredients(ingredient, calories, fat, protein, carbs, fiber, sugar) VALUES ($1, $2, $3, $4, $5, $6, $7);';
+  let values = [ingredient, calories, fat, protein, carbs, fiber, sugar];
+  return client.query(SQL, values)
+    .then(response.redirect('/'))
+    .catch(err => handleError(err, response));
+}
 
 app.listen(PORT, () => console.log(`Listening on ${PORT}`));
