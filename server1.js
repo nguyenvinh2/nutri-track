@@ -1,7 +1,5 @@
 'use strict';
 
-'use strict';
-
 require('dotenv').config();
 
 const express = require('express');
@@ -29,13 +27,17 @@ app.use(methodOverride((request, response) => {
 
 app.set('view engine', 'ejs');
 
+app.get('/', getMeals);// <<<<<<<<<<<<<<<<<<< Jeff added
+app.get('/new-meal', meal);// <<<<<<<<<<<<<<<<<<< Jeff added
+
 app.get('/searches', search);
 app.post('/searches', searchFood);
 
-app.get('/meal', meal);  // <<<<<<<<<<<<<<<<<<< Listener Jeff added
-app.post('/meal', addMeal);
+app.get('/meal', meal);// <<<<<<<<<<<<<<<<<<< Jeff added
+app.post('/meal', addMeal);// <<<<<<<<<<<<<<<<<<< Jeff added
 
-function meal(request, response) {
+
+function meal(request, response) {// <<<<<<<<<<<<<<<<<<< Jeff added
   response.render('pages/new-meal');
 }
 
@@ -85,6 +87,19 @@ app.listen(PORT, () => console.log(`Listening on ${PORT}`));
 
 
 // WHAT JEFF IS ADDING:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+
+
+function getMeals(request, response) {
+
+  let SQL = `SELECT * FROM meals;`;
+
+  return client.query(SQL)
+    .then(results => response.render('index', {mealList: results.rows}))
+    .catch(error => {
+      response.render('pages/error', {errorMsg: error});
+    });
+
+}
 
 
 function addMeal(request) {
