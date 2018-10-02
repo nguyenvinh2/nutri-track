@@ -30,13 +30,13 @@ app.set('view engine', 'ejs');
 app.get('/', getMeals);
 app.get('/searches', search);
 app.get('/meals/:meal_id', buildMeal);
-app.get('/new-meal', meal);// <<<<<<<<<<<<<<<<<<< Jeff added
+app.get('/new-meal', meal);
 
 app.post('/searches', searchFood);
 app.post('/add', addIngredient);
 
-app.get('/meal', meal);// <<<<<<<<<<<<<<<<<<< Jeff added
-app.post('/meal', addMeal);// <<<<<<<<<<<<<<<<<<< Jeff added
+app.get('/meal', meal);
+app.post('/meal', addMeal);
 
 
 function buildMeal(request, response) {// <<<<<<<<<<<<<<<<<<< ***IGNORE CHANGES I'VE MADE TO THIS FUNCTION***
