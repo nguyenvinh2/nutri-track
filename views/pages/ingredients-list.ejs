@@ -8,8 +8,39 @@
     <header>
       <%- include('../layout/nav') %>
     </header>
+    
     <main>
-      <h1>Meal Name Here (i.e. Steak and Potatoes)</h1>
+      <h1>Meal ID: <%=ingredients[0].name%></h1>
+      
+      <section class="search">
+        <h2>Search Ingredients</h1>
+        <form action="/meals/<%= ingredients[0].id%>" method="post">
+          <input type="hidden" name="meal_id" value="<%= ingredients[0].id%>" required>
+          <input type="text" name="search" placeholder="Enter a Food Item" required>
+          <button type="submit">Search</button>
+        </form>
+      </section>
+
+      <% ingredients.forEach(element => { %>
+      <section class="ingredients-container">
+        <form id="change-values" action="/calculate" method="post">
+            <li>Ingredient</li>
+            <input type="text" name="ingredient" value=" <%= element.ingredient %>">
+            <li>Calories (kcal)</li>
+            <input type="text" name="calories" value=" <%= element.calories %>">
+            <li>Total Fat (g)</li>
+            <input type="text" name="fat" value=" <%= element.fat %>">
+            <li>Protein (g)</li>
+            <input type="text" name="protein" value=" <%= element.protein %>">
+            <li>Carbohydrates (g)</li>
+            <input type="text" name="carbs" value=" <%= element.carbs %>">
+            <li>Fiber (g)</li>
+            <input type="text" name="fiber" value=" <%= element.fiber %>">
+            <li>Sugars (g)</li>
+            <input type="text" name="sugar" value=" <%= element.sugar %>">
+        </form>
+      </section>
+      <%})%>
 
       <!-- list or table of ingredients down here -->
 

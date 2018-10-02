@@ -28,20 +28,25 @@ app.use(methodOverride((request, response) => {
 app.set('view engine', 'ejs');
 
 app.get('/', getMeals);
-app.get('/searches', search);
-app.get('/meals/:meal_id', buildMeal);
 app.get('/new-meal', meal);// <<<<<<<<<<<<<<<<<<< Jeff added
+app.get('/meals/:meal_id', buildMeal);
 
-app.post('/searches', searchFood);
+app.post('/meals/:meal_id', searchFood);
 app.post('/add', addIngredient);
-
-app.get('/meal', meal);// <<<<<<<<<<<<<<<<<<< Jeff added
 app.post('/meal', addMeal);// <<<<<<<<<<<<<<<<<<< Jeff added
 
 
 function buildMeal(request, response) {
-  console.log(request.params.meal_id);
-  response.render('pages/ingredients-list');
+  let SQL = 'SELECT * FROM ingredients RIGHT JOIN meals ON meals.id = ingredients.meal_id WHERE meals.id = $1;';
+  let values = [request.params.meal_id];
+
+
+  return client.query(SQL, values)
+    .then(result => {
+      response.render('pages/ingredients-list', { ingredients: result.rows });
+
+    })
+    .catch(handleError);
 }
 
 //SET LANDING PAGE
@@ -57,9 +62,6 @@ function getMeals(request, response) {
 
 }
 
-function search(request, response) {
-  response.render('pages/search');
-}
 
 function meal(request, response) {// <<<<<<<<<<<<<<<<<<< Jeff added
   response.render('pages/new-meal');
@@ -81,7 +83,8 @@ function searchFood(request, response) {
           const carbs = content.body.foods[0].food.nutrients[4].value;
           const fiber = content.body.foods[0].food.nutrients[5].value;
           const sugar = content.body.foods[0].food.nutrients[6].value;
-          const ingredientItem = new Ingredient(food.name, calories, fat, protein, carbs, fiber, sugar);
+          const meal_id = request.body.meal_id;
+          const ingredientItem = new Ingredient(food.name, calories, fat, protein, carbs, fiber, sugar, meal_id);
           foodList.push(ingredientItem);
           if (foodList.length === foodResponse.body.list.item.length) {
             response.render('pages/result', { ingredients: foodList });
@@ -92,7 +95,7 @@ function searchFood(request, response) {
     .catch(error => handleError(error, response));
 }
 
-function Ingredient(name, calories, fat, protein, carbs, fiber, sugar) {
+function Ingredient(name, calories, fat, protein, carbs, fiber, sugar, meal) {
   this.name = name;
   this.calories = calories;
   this.fat = fat;
@@ -100,14 +103,16 @@ function Ingredient(name, calories, fat, protein, carbs, fiber, sugar) {
   this.carbs = carbs;
   this.fiber = fiber;
   this.sugar = sugar;
+  this.meal_id = meal;
 }
 
 function addIngredient(request, response) {
-  let { ingredient, calories, fat, protein, carbs, fiber, sugar, meal } = request.body;
-  let SQL = 'INSERT INTO ingredients(ingredient, calories, fat, protein, carbs, fiber, sugar) VALUES ($1, $2, $3, $4, $5, $6, $7);';
-  let values = [ingredient, calories, fat, protein, carbs, fiber, sugar];
+  console.log(request.body);
+  let { ingredient, calories, fat, protein, carbs, fiber, sugar, meal_id} = request.body;
+  let SQL = 'INSERT INTO ingredients(ingredient, calories, fat, protein, carbs, fiber, sugar, meal_id) VALUES ($1, $2, $3, $4, $5, $6, $7, $8);';
+  let values = [ingredient, calories, fat, protein, carbs, fiber, sugar, meal_id];
   return client.query(SQL, values)
-    .then(response.redirect('/'))
+    .then(response.redirect(`/meals/${request.body.meal_id}`))
     .catch(err => handleError(err, response));
 }
 
