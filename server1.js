@@ -32,6 +32,8 @@ app.get('/searches', search);
 app.get('/meals/:meal_id', buildMeal);
 app.get('/new-meal', meal);
 
+app.get('/about-us', renderAboutUs); // <<ADDING
+
 app.post('/searches', searchFood);
 app.post('/add', addIngredient);
 
@@ -67,6 +69,10 @@ function getMeals(request, response) {
 
 function search(request, response) {
   response.render('pages/search');
+}
+
+function renderAboutUs(request, response) {// <<<<<<<< JEFF ADDED
+  response.render('pages/about-us');
 }
 
 function meal(request, response) {// <<<<<<<<<<<<<<<<<<< Jeff added
