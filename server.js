@@ -30,9 +30,14 @@ app.set('view engine', 'ejs');
 app.get('/', getMeals);
 app.get('/searches', search);
 app.get('/meals/:meal_id', buildMeal);
+app.get('/new-meal', meal);// <<<<<<<<<<<<<<<<<<< Jeff added
 
 app.post('/searches', searchFood);
 app.post('/add', addIngredient);
+
+app.get('/meal', meal);// <<<<<<<<<<<<<<<<<<< Jeff added
+app.post('/meal', addMeal);// <<<<<<<<<<<<<<<<<<< Jeff added
+
 
 function buildMeal(request, response) {
   console.log(request.params.meal_id);
@@ -54,6 +59,10 @@ function getMeals(request, response) {
 
 function search(request, response) {
   response.render('pages/search');
+}
+
+function meal(request, response) {// <<<<<<<<<<<<<<<<<<< Jeff added
+  response.render('pages/new-meal');
 }
 
 function searchFood(request, response) {
@@ -95,8 +104,8 @@ function Ingredient(name, calories, fat, protein, carbs, fiber, sugar) {
 
 function addIngredient(request, response) {
   let { ingredient, calories, fat, protein, carbs, fiber, sugar, meal } = request.body;
-  let SQL = 'INSERT INTO ingredients(ingredient, calories, fat, protein, carbs, fiber, sugar, meal) VALUES ($1, $2, $3, $4, $5, $6, $7, $8);';
-  let values = [ingredient, calories, fat, protein, carbs, fiber, sugar, meal];
+  let SQL = 'INSERT INTO ingredients(ingredient, calories, fat, protein, carbs, fiber, sugar) VALUES ($1, $2, $3, $4, $5, $6, $7);';
+  let values = [ingredient, calories, fat, protein, carbs, fiber, sugar];
   return client.query(SQL, values)
     .then(response.redirect('/'))
     .catch(err => handleError(err, response));
@@ -104,6 +113,26 @@ function addIngredient(request, response) {
 
 function handleError(err, res) {
   res.render('pages/error', { error: err, response: res });
+}
+
+function addMeal(request) {
+
+  //let meal = new Meal(request.body.name, request.body.description, request.body.image_url);
+
+  let { name, description, image_url } = request.body;
+
+  let SQL = `INSERT INTO meals (name, description, image_url) VALUES ($1, $2, $3);`;
+  let values = [name, description, image_url];
+
+  return client.query(SQL, values);
+
+}
+
+function Meal(name, description, image_url) {
+  this.name = name;
+  this.description = description;
+  this.image_url = image_url;
+
 }
 
 app.listen(PORT, () => console.log(`Listening on ${PORT}`));
