@@ -30,13 +30,15 @@ app.set('view engine', 'ejs');
 app.get('/', getMeals);
 app.get('/searches', search);
 app.get('/meals/:meal_id', buildMeal);
-app.get('/new-meal', meal);// <<<<<<<<<<<<<<<<<<< Jeff added
+app.get('/new-meal', meal);
+
+app.get('/about-us', renderAboutUs); // <<ADDING
 
 app.post('/searches', searchFood);
 app.post('/add', addIngredient);
 
-app.get('/meal', meal);// <<<<<<<<<<<<<<<<<<< Jeff added
-app.post('/meal', addMeal);// <<<<<<<<<<<<<<<<<<< Jeff added
+app.get('/meal', meal);
+app.post('/meal', addMeal);
 
 
 function buildMeal(request, response) {// <<<<<<<<<<<<<<<<<<< ***IGNORE CHANGES I'VE MADE TO THIS FUNCTION***
@@ -67,6 +69,10 @@ function getMeals(request, response) {
 
 function search(request, response) {
   response.render('pages/search');
+}
+
+function renderAboutUs(request, response) {// <<<<<<<< JEFF ADDED
+  response.render('pages/about-us');
 }
 
 function meal(request, response) {// <<<<<<<<<<<<<<<<<<< Jeff added
