@@ -1,0 +1,57 @@
+.logo {
+  font-family: 'K2D', sans-serif;
+  font-size: 10vw;
+  text-align: center;
+  margin-top: 5vw;
+}
+
+.get-started-form {
+  display: flex;
+  justify-content: center;
+}
+
+.get-started-button {
+  margin-top: 8vw;
+  background-color: #4CAF50;
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+}
+
+.saved-meals-header {
+  margin-top: 10vw;
+  margin-bottom: 5vw;
+  text-align: center;
+  font-size: 4vw;
+  font-weight: bold;
+}
+
+.saved-meals {
+  display: flex;
+  flex-flow: space-evenly;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.saved-meals div {
+  display: flex;
+  height: 40vw;
+  width: 30vw;
+  outline: 1px solid black;
+  margin: 0 3vw 6vw 3vw;
+  
+}
+
+.saved-meals h3 {
+  text-align: center;
+  font-weight: bold;
+  font-size: 3vw;
+}
+
+.meal-image {
+  width: 29vw;  
+}
