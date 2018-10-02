@@ -81,20 +81,18 @@ HTML will be rendered server side using EJS and Express with other dependencies 
 # Project Timeline:
 
 ## 01 October 2018 (Monday):
--Project Proposal
--Wireframes
--Finalize User Stories
+-Project Proposal (VN/JB/JE)
+-Complete Wireframes (JB)
+-Finalize User Stories (VN)
 -Finalize Pitch
--Finalize Communication Plan
--Finalize PM Plan
--Finalize Conflict Plan
--User Scenarios
--Domain/Data Models
--Scaffold Project
+-Finalize Communication Plan (JE)
+-Finalize PM Plan (JE)
+-Finalize Conflict Plan (JE)
+-Domain/Data Models (VN)
+-Scaffold Project (VN/JB/JE)
 
 ## 02 October 2018 (Tuesday):
--Complete wireframes
--Complete setup of main features
+-Complete setup of main features (VN/JB/JE)
 
 ## 03 October 2018 (Wednesday):
 -Reach MVP by EOD
