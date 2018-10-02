@@ -27,17 +27,33 @@ app.use(methodOverride((request, response) => {
 
 app.set('view engine', 'ejs');
 
+app.get('/', getMeals);
 app.get('/searches', search);
+app.get('/meals/:meal_id', buildMeal);
 
 app.post('/searches', searchFood);
 app.post('/add', addIngredient);
 
-function search(request, response) {
-  response.render('pages/search');
+function buildMeal(request, response) {
+  console.log(request.params.meal_id);
+  response.render('pages/ingredients-list');
 }
 
-function handleError(err, res) {
-  res.render('pages/error', { error: err, response: res });
+//SET LANDING PAGE
+function getMeals(request, response) {
+
+  let SQL = `SELECT * FROM meals;`;
+
+  return client.query(SQL)
+    .then(results => response.render('index', { mealList: results.rows }))
+    .catch(error => {
+      response.render('pages/error', { errorMsg: error });
+    });
+
+}
+
+function search(request, response) {
+  response.render('pages/search');
 }
 
 function searchFood(request, response) {
@@ -46,7 +62,7 @@ function searchFood(request, response) {
   superagent.get(url)
     .then(foodResponse => {
       const foodList = [];
-      const ingredientList = foodResponse.body.list.item.map(food => {
+      foodResponse.body.list.item.map(food => {
         const item_url = `https://api.nal.usda.gov/ndb/V2/reports?ndbno=${food.ndbno}&type=b&format=json&api_key=${process.env.USDA_API_KEY}`;
 
         superagent.get(item_url).then(content => {
@@ -78,12 +94,16 @@ function Ingredient(name, calories, fat, protein, carbs, fiber, sugar) {
 }
 
 function addIngredient(request, response) {
-  let { ingredient, calories, fat, protein, carbs, fiber, sugar } = request.body;
-  let SQL = 'INSERT INTO ingredients(ingredient, calories, fat, protein, carbs, fiber, sugar) VALUES ($1, $2, $3, $4, $5, $6, $7);';
-  let values = [ingredient, calories, fat, protein, carbs, fiber, sugar];
+  let { ingredient, calories, fat, protein, carbs, fiber, sugar, meal } = request.body;
+  let SQL = 'INSERT INTO ingredients(ingredient, calories, fat, protein, carbs, fiber, sugar, meal) VALUES ($1, $2, $3, $4, $5, $6, $7, $8);';
+  let values = [ingredient, calories, fat, protein, carbs, fiber, sugar, meal];
   return client.query(SQL, values)
     .then(response.redirect('/'))
     .catch(err => handleError(err, response));
+}
+
+function handleError(err, res) {
+  res.render('pages/error', { error: err, response: res });
 }
 
 app.listen(PORT, () => console.log(`Listening on ${PORT}`));

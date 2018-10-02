@@ -23,17 +23,17 @@
 
 
     <h2>My Saved Meals</h2>
-
-    <ul class=saved-meals>
-      <li>
-        <% mealList.forEach( meal => { %>
+    <section class=saved-meals>
+    <% mealList.forEach( meal => { %>
+    <form action="/meals/<%= meal.id%>" method="get">
+      <div>
           <h3><%= meal.name %></h3>
-          <p><%= meal.description %></p>
-          <img src="<%=meal.img_url%>" alt="picture of meal" />
-        <% }) %>
-
-      </li>
-    </ul>
+          <input type="hidden" name="id" value ="<%=meal.id%>">
+          <input type="image" src="<%=meal.image_url%>" alt="Submit" height="150">
+      </div>
+    </form>
+    <% }) %>
+    </section>
 
 
   </main>
