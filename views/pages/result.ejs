@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+  <body>
+    <h2>Results!</h2>
+      <% ingredients.forEach(element => { %>
+      <section class="create-view-container">
+        <form id="add-ingredient" action="/add" method="post">
+          <ul>
+            <li>Ingredient: <%= element.name %></li>
+            <input type="hidden" name="ingredient" value=" <%= element.name %>">
+            <li>Calories (kcal): <%= element.calories %></li>
+            <input type="hidden" name="calories" value=" <%= element.calories %>">
+            <li>Total Fat (g): <%= element.fat %></li>
+            <input type="hidden" name="fat" value=" <%= element.fat %>">
+            <li>Protein (g): <%= element.protein %></li>
+            <input type="hidden" name="protein" value=" <%= element.protein %>">
+            <li>Carbohydrates (g): <%= element.carbs %></li>
+            <input type="hidden" name="carbs" value=" <%= element.carbs %>">
+            <li>Fiber (g): <%= element.fiber %></li>
+            <input type="hidden" name="fiber" value=" <%= element.fiber %>">
+            <li>Sugars (g): <%= element.sugar %></li>
+            <input type="hidden" name="sugar" value=" <%= element.sugar %>">
+            <input type="hidden" name="meal" value="Steak">
+          </ul>
+          <button class="button-id" type="submit">Add Ingredient</button>
+        </form>
+      </section>
+      <%})%>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script type="text/javascript" src="/js/app.js"></script>
+  </body>
+</html>

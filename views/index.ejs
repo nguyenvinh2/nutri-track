@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+  <%- include('layout/head') %>
+</head>
+
+<body>
+  
+  <header>
+    <%- include('layout/nav') %>
+    <h1>
+      Nutri-Track
+    </h1>
+  </header>
+  <main>
+
+
+    <form action="/new-meal" method="GET" >      
+      <button class="get-started-button" type="submit">Click here to get started!</button>
+    </form>
+
+
+    <h2>My Saved Meals</h2>
+    <section class=saved-meals>
+    <% mealList.forEach( meal => { %>
+    <form action="/meals/<%= meal.id%>" method="get">
+      <div>
+          <h3><%= meal.name %></h3>
+          <input type="hidden" name="id" value ="<%=meal.id%>">
+          <input type="image" src="<%=meal.image_url%>" alt="Submit" height="150">
+      </div>
+    </form>
+    <% }) %>
+    </section>
+
+
+  </main>
+
+</body>
+
+</html>
