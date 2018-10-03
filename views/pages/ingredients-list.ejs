@@ -8,10 +8,80 @@
     <header>
       <%- include('../layout/nav') %>
     </header>
+    
     <main>
-      <h1>Meal Name Here (i.e. Steak and Potatoes)</h1>
-
-      <!-- list or table of ingredients down here -->
+      <h1>Meal ID: <%=ingredients[0].name%></h1>
+      
+      <section class="search">
+        <h2>Search Ingredients</h1>
+        <form action="/meals/<%= ingredients[0].id%>" method="post">
+          <input type="hidden" name="meal_id" value="<%= ingredients[0].id%>" required>
+          <input type="text" name="search" placeholder="Enter a Food Item" required>
+          <button type="submit">Search</button>
+        </form>
+      </section>
+      <%let amount = 0%>
+      <%let calories = 0%>
+      <%let fat = 0%>
+      <%let protein = 0%>
+      <%let carbs = 0%>
+      <%let fiber = 0%>
+      <%let sugar = 0%>
+      <form id="update-amount" action="/delete" method="post"> 
+      <input type="hidden" name="meal_id" value="<%= ingredients[0].id%>" required>
+      <table class="ingredient-container">
+        <tr>
+          <td class="ingredient-name">Ingredient</td>
+          <td class="ingredient-amount">Amount (g)</td>
+          <td class="ingredient-calories">Calories (kcal)</td>
+          <td class="ingredient-fat">Total Fat (g)</td>
+          <td class="ingredient-protein">Proteinb(g)</td>
+          <td class="ingredient-carbs">Carbohydrates (g)</td>
+          <td class="ingredient-fiber">Fiber (g)</td>
+          <td class="ingredient-sugar">sugar (g)</td>
+        </tr>
+      <% if (ingredients[0].ingredient !==null) {%>
+      <% ingredients.forEach(element => { %>
+        
+        <%amount += parseInt(element.amount)%>
+        <%calories += parseInt(element.calories)%>
+        <%fat += parseFloat(element.fat)%>
+        <%protein += parseFloat(element.protein)%>
+        <%carbs += parseFloat(element.carbs)%>
+        <%fiber += parseFloat(element.fiber)%>
+        <%sugar += parseFloat(element.sugar)%>
+        
+        <tr>
+          <td class="ingredient-name"><%= element.ingredient %></td>
+          <td><input type="hidden" name="ingredient" value="<%= element.ingredient%>"></td>
+          <td class="ingredient-amount"><input type="text" name="amount" value="<%=element.amount%>"></td>
+          <td class="ingredient-calories"><%= element.calories %></td>
+          <td class="ingredient-fat"><%= element.fat %></td>
+          <td class="ingredient-protein"><%= element.protein %></td>
+          <td class="ingredient-carbs"><%= element.carbs %></td>
+          <td class="ingredient-fiber"><%= element.fiber %></td>
+          <td class="ingredient-sugar"><%= element.sugar %></td>
+          <td>
+            <button type="submit" name="delete" value="<%= element.ingredient %>">
+              <img src="https://www.drodd.com/images15/red-x11.jpeg" height="15">
+            </button>
+          </td>
+        </tr>
+      <%})%>
+      <%}%>
+        <tr>
+          <td>TOTAL</td>
+          <td><%=amount%></td>
+          <td><%=calories%></td>
+          <td><%=fat.toFixed(0)%></td>
+          <td><%=protein.toFixed(0)%></td>
+          <td><%=carbs.toFixed(0)%></td>
+          <td><%=fiber.toFixed(0)%></td>
+          <td><%=sugar.toFixed(0)%></td>
+        </tr>
+      </table>
+      <input type="submit" value="Save Amount" name="update" formaction="/update">
+      </form>
 
     </main>
   </body>
