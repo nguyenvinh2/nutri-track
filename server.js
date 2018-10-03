@@ -23,12 +23,66 @@ app.set('view engine', 'ejs');
 app.get('/', getMeals);
 app.get('/new-meal', meal);// <<<<<<<<<<<<<<<<<<< Jeff added
 app.get('/meals/:meal_id', buildMeal);
+app.get('/about-us', renderAboutUs);
+app.get('/get-started', renderGetStarted);
 
+app.post('/meals-edit/save', saveMealEdits)
+app.post('/meals-edit', editMeal);
+app.post('/meals-delete', deleteMeal);
 app.post('/meals/:meal_id', searchFood);
 app.post('/add', addIngredient);
 app.post('/meal', addMeal);// <<<<<<<<<<<<<<<<<<< Jeff added
 app.post('/delete', deleteIngredients);
 app.post('/update', updateIngredients);
+
+function editMeal(request, response) {
+  let SQL = `SELECT * FROM meals WHERE id = $1`;
+  let values = [request.body.meal_id];
+  return client.query(SQL, values)
+    .then(result => {
+      console.log(result.rows);
+      response.render('pages/edit-meal.ejs', { meal: result.rows });
+    })
+    .catch(handleError);
+}
+
+function saveMealEdits(request, response) {
+  console.log(request.body);
+  let SQL = `UPDATE meals SET(name, description, image_url) = ($1, $2, $3) WHERE id = $4;`;
+  let values = [request.body.name, request.body.description, request.body.image_url, request.body.meal_id];
+  return client.query(SQL, values)
+    .then(() => {
+      response.redirect(`/meals/${request.body.meal_id}`);
+    })
+
+}
+
+
+function deleteMeal(request, response) {
+  console.log(request.body);
+  let SQL = `DELETE FROM ingredients WHERE meal_id = $1;`;
+  let values = [request.body.meal_id]
+  return client.query(SQL, values)
+    .then(() => {
+      let SQL2 = `DELETE FROM meals WHERE id = $1;`;
+      return client.query(SQL2, values)
+        .then(() => {
+          response.redirect(`/`);
+        })
+        .catch(handleError);
+    })
+    .catch(handleError);
+}
+
+
+function renderAboutUs(request, response) {// <<<<<<<< JEFF ADDED
+  response.render('pages/about-us');
+}
+
+function renderGetStarted(request, response) {
+  response.render('pages/how-to');
+}
+
 
 function deleteIngredients(request, response) {
   let SQL = `DELETE FROM ingredients WHERE ingredient = $1 AND meal_id = $2;`;
