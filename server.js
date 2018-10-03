@@ -160,7 +160,7 @@ function addMeal(request, response) {
   let values = [name, description, image_url];
 
   return client.query(SQL, values)
-    .then(response.redirect(`/meals/${request.body.meal_id}`))
+    .then(response.redirect(`/`))
     .catch(err => handleError(err, response));
 }
 
