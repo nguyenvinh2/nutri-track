@@ -53,35 +53,31 @@ nav a:hover {
   }
 }
 
-h1 {
+#about-us-h1 {
+  font-family: 'K2D', sans-serif;
   text-align: center;
   font-size: 7vw;
 }
 
+.about-info div {
+  margin: 65px;
+}
+
 h2 {
-  outline: 2px solid orange;
+  outline: 2px dashed orange;
   margin-left: 4vw;
   font-size: 3vw;
   font-weight: bold;
 }
 
-p {
-  outline: 2px solid orange;
-  margin-left: 7vw;
-  margin-right: 7vw;
-  margin-bottom: 4vw;
+.about-info p {
+  width: 90%;
+  outline: 2px dashed blue;
 }
 
-#jeff-image {
+.about-info img {
   float: left;
   margin-top: 1vw;
   margin-left: 4vw;
   width: 30%;
-}
-
-#joey-image {
-  float: left;
-  margin-top: 1vw;
-  margin-left: 4vw;
-  width: 25%;
 }
