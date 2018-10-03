@@ -1,3 +1,10 @@
 body {
-  background-color: gray;
+  background-color: whitesmoke;
+}
+
+main {
+  background-color: whitesmoke;
+  font-family: Helvetica, Arial, sans-serif;
+  margin-left: 5vw;
+  margin-right: 5vw;
 }

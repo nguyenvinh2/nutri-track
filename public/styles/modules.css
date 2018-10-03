@@ -1,0 +1,97 @@
+.get-started-form {
+  display: flex;
+  justify-content: center;
+}
+
+.get-started-button {
+  background-color: rgb(83, 145, 185);
+  border: none;
+  color: white;
+  /* padding: 15px 32px; */
+  padding: 3.5vw 6vw;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+}
+
+.get-started-button:hover {
+  cursor: pointer;
+}
+
+.page-header {
+  margin-top: 10vw;
+  margin-bottom: 5vw;
+  text-align: center;
+  font-size: 4vw;
+  font-weight: bold;
+}
+
+.saved-meals {
+  display: flex;
+  flex-flow: space-evenly;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.saved-meals div {
+  display: flex;
+  flex-direction: column;
+  height: 30vw;
+  width: 30vw;
+  /* outline: 1px solid black; */
+  margin: 0 3vw 6vw 3vw;
+  
+}
+
+.saved-meals h3 {
+  margin-bottom: 1vw;
+  text-align: center;
+  font-weight: bold;
+  font-size: 3vw;
+}
+
+.meal-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  overflow: hidden; 
+}
+
+
+
+/* MEAL CREATOR FORM */
+.meal-form-container {
+  margin: 0 auto;
+  margin-top: 5vw;
+  height: 100vw;
+  width: 60vw;
+  display: flex;
+  flex-direction: column;
+  /* outline: 1px solid black; */
+}
+
+.meal-form-container input {
+  margin-bottom: 3vw;
+  width: 100%;
+}
+
+.meal-form-container textarea {
+  margin-bottom: 3vw;
+  resize: none;
+  width: 99.7%;
+  height: 20%;
+}
+
+.meal-form-container button {
+  background-color: rgb(83, 145, 185);
+  border: none;
+  color: white;
+  padding: 3.5vw 6vw;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px; 
+  width: 100%;
+  
+}

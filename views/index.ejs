@@ -4,25 +4,25 @@
 
 <head>
   <%- include('layout/head') %>
+  <title>Home Page</title>
 </head>
 
 <body>
   
   <header>
     <%- include('layout/nav') %>
-    <h1>
-      Nutri-Track
-    </h1>
+    
   </header>
   <main>
 
 
-    <form action="/new-meal" method="GET" >      
+    <form action="/new-meal" method="GET"class="get-started-form">      
+
       <button class="get-started-button" type="submit">Click here to get started!</button>
     </form>
 
 
-    <h2>My Saved Meals</h2>
+    <h2 class="page-header">My Saved Meals</h2>
     <section class=saved-meals>
     <% mealList.forEach( meal => { %>
     <form action="/meals/<%= meal.id%>" method="get">
@@ -31,7 +31,8 @@
           <input type="hidden" name="id" value ="<%=meal.id%>">
           <input type="hidden" name="name" value ="<%=meal.name%>">
           <input type="hidden" name="description" value ="<%=meal.desription%>">
-          <input type="image" src="<%=meal.image_url%>" alt="Submit" height="150">
+          <input class="meal-image" type="image" src="<%=meal.image_url%>" alt="Submit">
+
       </div>
     </form>
     <% }) %>
