@@ -94,8 +94,64 @@
   
 }
 
-/* Ingredients-list page */
+/* Search Results page */
 
-.search {
-  width: 100%;
+.ingredients-results {
+  margin-left: 13vw;
+}
+
+.ingredients-results button {
+  margin-top: 2vw;
+  margin-bottom: 2vw;
+}
+
+.ingredients-results h2 {
+  font-weight: bold;
+  font-size: 5vw;
+}
+
+.ingredients-results ul li:first-child {
+  font-weight: bold;
+}
+
+#add-ingredient {
+  margin: 4vw;
+}
+
+/* Ingredients List page */
+
+.meal-edit h1 {
+  font-size: 5vw;
+  font-weight: bold;
+  margin-bottom: 2vw;
+}
+
+.search h2 {
+  font-size: 3vw;
+  font-weight: bold;
+  margin-top: 4vw;
+  margin-bottom: 3vw;
+}
+
+.search form {
+  margin-bottom: 2vw;
+}
+
+.table-scroll {
+  overflow-x: scroll;
+  margin-bottom: 2vw;
+}
+
+.ingredient-container, th, td {
+  border: 1px solid black;
+  border-collapse: collapse;
+}
+
+.ingredient-container th {
+  font-weight: bold;
+}
+
+.ingredient-amount input {
+  text-align: center;
+  max-width: 55px;
 }

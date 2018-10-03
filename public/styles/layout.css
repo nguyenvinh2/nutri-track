@@ -44,14 +44,12 @@ nav a:hover {
 
 
 
-@media only screen and (min-width: 800px) {
+/* @media only screen and (min-width: 800px) { */
   
-
-
-  body{
+  /* body{
     background-color: purple;
-  }
-}
+  } */
+/* } */
 
 #about-us-h1 {
   font-family: 'K2D', sans-serif;
@@ -63,7 +61,7 @@ nav a:hover {
   margin: 65px;
 }
 
-h2 {
+.about-info h2 {
   outline: 2px dashed orange;
   margin-left: 4vw;
   font-size: 3vw;
@@ -81,3 +79,24 @@ h2 {
   margin-left: 4vw;
   width: 30%;
 }
+
+.get-started h1 {
+  text-align: center;
+  margin-bottom: 3vw;
+  font-weight: bold;
+  font-size: 5vw;
+}
+
+.get-started h2 {
+  margin-top: 4vw;
+  text-align: center;
+  margin-bottom: 3vw;
+  font-weight: bold;
+  font-size: 5vw;
+}
+
+ol {
+  margin-left: 5vw;
+  list-style: decimal;
+}
+

@@ -33,7 +33,7 @@ app.post('/meals/:meal_id', searchFood);
 app.post('/add', addIngredient);
 app.post('/meal', addMeal);// <<<<<<<<<<<<<<<<<<< Jeff added
 app.post('/delete', deleteIngredients);
-app.post('/update', updateIngredients);
+app.post('/meal-update', updateIngredients);
 
 function editMeal(request, response) {
   let SQL = `SELECT * FROM meals WHERE id = $1`;
@@ -173,7 +173,7 @@ function searchFood(request, response) {
           const ingredientItem = new Ingredient(food.name, food.ndbno, calories, fat, protein, carbs, fiber, sugar, meal_id);
           foodList.push(ingredientItem);
           if (foodList.length === foodResponse.body.list.item.length) {
-            response.render('pages/result', { ingredients: foodList });
+            response.render('pages/result', { ingredients: foodList, search: request.body.search });
           }
         });
       });
