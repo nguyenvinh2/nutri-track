@@ -20,30 +20,36 @@
           <button type="submit">Search</button>
         </form>
       </section>
-
+      <form id="update-amount" action="/delete" method="post"> 
+      <input type="hidden" name="meal_id" value="<%= ingredients[0].id%>" required>
+      <table class="ingredient-container">
+        <tr>
+          <td class="ingredient-name">Ingredient</td>
+          <td class="ingredient-amount">Amount</td>
+          <td class="ingredient-calories">Calories (kcal)</td>
+          <td class="ingredient-fat">Total Fat (g)</td>
+          <td class="ingredient-protein">Proteinb(g)</td>
+          <td class="ingredient-carbs">Carbohydrates (g)</td>
+          <td class="ingredient-fiber">Fiber (g)</td>
+          <td class="ingredient-sugar">sugar (g)</td>
+        </tr>
       <% ingredients.forEach(element => { %>
-      <section class="ingredients-container">
-        <form id="change-values" action="/calculate" method="post">
-            <li>Ingredient</li>
-            <input type="text" name="ingredient" value=" <%= element.ingredient %>">
-            <li>Calories (kcal)</li>
-            <input type="text" name="calories" value=" <%= element.calories %>">
-            <li>Total Fat (g)</li>
-            <input type="text" name="fat" value=" <%= element.fat %>">
-            <li>Protein (g)</li>
-            <input type="text" name="protein" value=" <%= element.protein %>">
-            <li>Carbohydrates (g)</li>
-            <input type="text" name="carbs" value=" <%= element.carbs %>">
-            <li>Fiber (g)</li>
-            <input type="text" name="fiber" value=" <%= element.fiber %>">
-            <li>Sugars (g)</li>
-            <input type="text" name="sugar" value=" <%= element.sugar %>">
-        </form>
-      </section>
+        <tr>
+          <td class="ingredient-name"><%= element.ingredient %></td>
+          <input type="hidden" name="ingredient" value="<%= element.ingredient%>" required>
+          <td class="ingredient-amount"><input type="text" name="amount" value="<%=element.amount%>"></td>
+          <td class="ingredient-calories"><%= element.calories %></td>
+          <td class="ingredient-fat"><%= element.fat %></td>
+          <td class="ingredient-protein"><%= element.protein %></td>
+          <td class="ingredient-carbs"><%= element.carbs %></td>
+          <td class="ingredient-fiber"><%= element.fiber %></td>
+          <td class="ingredient-sugar"><%= element.sugar %></td>
+          <td><input type="image" name="delete" src="https://www.drodd.com/images15/red-x11.jpeg" value="<%= element.ingredient %>" formaction="/delete" height="25"><td>
+        </tr>
       <%})%>
-
-      <!-- list or table of ingredients down here -->
-
+      </table>
+      <input type="submit" value="Save Amount" name="update" formaction="/update">
+      </form>
     </main>
   </body>
 </html>

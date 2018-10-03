@@ -17,13 +17,6 @@ client.on('error', err => console.error(err));
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static('public'));
-app.use(methodOverride((request, response) => {
-  if (request.body && typeof request.body === 'object' && '_method' in request.body) {
-    let method = request.body._method;
-    delete request.body._method;
-    return method;
-  }
-}));
 
 app.set('view engine', 'ejs');
 
@@ -34,10 +27,26 @@ app.get('/meals/:meal_id', buildMeal);
 app.post('/meals/:meal_id', searchFood);
 app.post('/add', addIngredient);
 app.post('/meal', addMeal);// <<<<<<<<<<<<<<<<<<< Jeff added
+app.post('/delete', deleteIngredients);
+app.post('/update', updateIngredients);
+
+function deleteIngredients(request, response) {
+  let SQL = `DELETE FROM ingredients WHERE ingredient = $1 AND meal_id = $2;`;
+  let values = [request.body.delete, request.body.meal_id]
+  return client.query(SQL, values)
+    .then(() => {
+      response.redirect(`/meals/${request.body.meal_id}`);
+    })
+}
+
+function updateIngredients(request, response) {
+  console.log(request.body);
+}
+
 
 
 function buildMeal(request, response) {
-  let SQL = 'SELECT * FROM ingredients RIGHT JOIN meals ON meals.id = ingredients.meal_id WHERE meals.id = $1;';
+  let SQL = `SELECT * FROM ingredients RIGHT JOIN meals ON meals.id = ingredients.meal_id WHERE meals.id = $1;`;
   let values = [request.params.meal_id];
 
 
@@ -97,6 +106,7 @@ function searchFood(request, response) {
 
 function Ingredient(name, calories, fat, protein, carbs, fiber, sugar, meal) {
   this.name = name;
+  this.amount = 100;
   this.calories = calories;
   this.fat = fat;
   this.protein = protein;
@@ -107,11 +117,11 @@ function Ingredient(name, calories, fat, protein, carbs, fiber, sugar, meal) {
 }
 
 function addIngredient(request, response) {
-  console.log(request.body);
-  let { ingredient, calories, fat, protein, carbs, fiber, sugar, meal_id} = request.body;
-  let SQL = 'INSERT INTO ingredients(ingredient, calories, fat, protein, carbs, fiber, sugar, meal_id) VALUES ($1, $2, $3, $4, $5, $6, $7, $8);';
-  let values = [ingredient, calories, fat, protein, carbs, fiber, sugar, meal_id];
+  let { ingredient, calories, fat, protein, carbs, fiber, sugar, meal_id, amount} = request.body;
+  let SQL = 'INSERT INTO ingredients(ingredient, calories, fat, protein, carbs, fiber, sugar, meal_id, amount) SELECT $1, $2, $3, $4, $5, $6, $7, $8, $9 WHERE NOT EXISTS (SELECT * FROM ingredients WHERE ingredient=$1 AND meal_id=$8);';
+  let values = [ingredient, calories, fat, protein, carbs, fiber, sugar, meal_id, amount];
   return client.query(SQL, values)
+    .then(results => console.log(results))
     .then(response.redirect(`/meals/${request.body.meal_id}`))
     .catch(err => handleError(err, response));
 }
