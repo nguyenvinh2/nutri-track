@@ -20,12 +20,19 @@
           <button type="submit">Search</button>
         </form>
       </section>
+      <%let amount = 0%>
+      <%let calories = 0%>
+      <%let fat = 0%>
+      <%let protein = 0%>
+      <%let carbs = 0%>
+      <%let fiber = 0%>
+      <%let sugar = 0%>
       <form id="update-amount" action="/delete" method="post"> 
       <input type="hidden" name="meal_id" value="<%= ingredients[0].id%>" required>
       <table class="ingredient-container">
         <tr>
           <td class="ingredient-name">Ingredient</td>
-          <td class="ingredient-amount">Amount</td>
+          <td class="ingredient-amount">Amount (g)</td>
           <td class="ingredient-calories">Calories (kcal)</td>
           <td class="ingredient-fat">Total Fat (g)</td>
           <td class="ingredient-protein">Proteinb(g)</td>
@@ -34,6 +41,15 @@
           <td class="ingredient-sugar">sugar (g)</td>
         </tr>
       <% ingredients.forEach(element => { %>
+        
+        <%amount += parseInt(element.amount)%>
+        <%calories += parseInt(element.calories)%>
+        <%fat += parseFloat(element.fat)%>
+        <%protein += parseFloat(element.protein)%>
+        <%carbs += parseFloat(element.carbs)%>
+        <%fiber += parseFloat(element.fiber)%>
+        <%sugar += parseFloat(element.sugar)%>
+        
         <tr>
           <td class="ingredient-name"><%= element.ingredient %></td>
           <input type="hidden" name="ingredient" value="<%= element.ingredient%>" required>
@@ -47,9 +63,20 @@
           <td><input type="image" name="delete" src="https://www.drodd.com/images15/red-x11.jpeg" value="<%= element.ingredient %>" formaction="/delete" height="25"><td>
         </tr>
       <%})%>
+        <tr>
+          <td>TOTAL</td>
+          <td><%=amount%></td>
+          <td><%=calories%></td>
+          <td><%=fat.toFixed(0)%></td>
+          <td><%=protein.toFixed(0)%></td>
+          <td><%=carbs.toFixed(0)%></td>
+          <td><%=fiber.toFixed(0)%></td>
+          <td><%=sugar.toFixed(0)%></td>
+        </tr>
       </table>
       <input type="submit" value="Save Amount" name="update" formaction="/update">
       </form>
+
     </main>
   </body>
 </html>

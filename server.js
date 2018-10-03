@@ -121,7 +121,6 @@ function addIngredient(request, response) {
   let SQL = 'INSERT INTO ingredients(ingredient, calories, fat, protein, carbs, fiber, sugar, meal_id, amount) SELECT $1, $2, $3, $4, $5, $6, $7, $8, $9 WHERE NOT EXISTS (SELECT * FROM ingredients WHERE ingredient=$1 AND meal_id=$8);';
   let values = [ingredient, calories, fat, protein, carbs, fiber, sugar, meal_id, amount];
   return client.query(SQL, values)
-    .then(results => console.log(results))
     .then(response.redirect(`/meals/${request.body.meal_id}`))
     .catch(err => handleError(err, response));
 }
@@ -131,22 +130,11 @@ function handleError(err, res) {
 }
 
 function addMeal(request) {
-
-  //let meal = new Meal(request.body.name, request.body.description, request.body.image_url);
-
   let { name, description, image_url } = request.body;
-
   let SQL = `INSERT INTO meals (name, description, image_url) VALUES ($1, $2, $3);`;
   let values = [name, description, image_url];
 
   return client.query(SQL, values);
-
-}
-
-function Meal(name, description, image_url) {
-  this.name = name;
-  this.description = description;
-  this.image_url = image_url;
 
 }
 
