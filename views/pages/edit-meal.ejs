@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+      <%- include('../layout/head') %>
+  </head>
+  <body>
+    <header>
+      <%- include('../layout/nav') %>
+    </header>
+    <main>
+      <h1 class="page-header">Edit Meal Properties</h1>
+
+      <div class="meal-form-container">
+        <form action="/meals-edit/save" method="POST" class="meal-form">
+          <input type="hidden" name="meal_id" value="<%=meal[0].id%>"/>
+          <input type="text" name="name" value="<%=meal[0].name%>" required />
+  
+          <textarea type="text" name="description" value="<%=meal[0].description%>" ><%=meal[0].description%></textarea>
+  
+          <input type="text" name="image_url" value="<%=meal[0].image_url%>" />
+  
+          <button type="submit" class="create-meal-button">Save Changes</button>
+        </form>
+      </div>
+
+
+    </main>
+  </body>
+</html>
