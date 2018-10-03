@@ -27,13 +27,14 @@
           <button type="submit">Search</button>
         </form>
       </section>
-      <%let amount = 0%>
-      <%let calories = 0%>
-      <%let fat = 0%>
-      <%let protein = 0%>
-      <%let carbs = 0%>
-      <%let fiber = 0%>
-      <%let sugar = 0%>
+      <%let count = 0;%>
+      <%let amount = 0;%>
+      <%let calories = 0;%>
+      <%let fat = 0;%>
+      <%let protein = 0;%>
+      <%let carbs = 0;%>
+      <%let fiber = 0;%>
+      <%let sugar = 0;%>
       <form id="update-amount" action="/delete" method="post"> 
       <input type="hidden" name="meal_id" value="<%= ingredients[0].id%>" required>
       <table class="ingredient-container">
@@ -58,39 +59,42 @@
         <%fiber += parseFloat(element.fiber)%>
         <%sugar += parseFloat(element.sugar)%>
         
-        <tr>
-          <td class="ingredient-name"><%= element.ingredient %></td>
-          <td><input type="hidden" name="ingredient" value="<%= element.ingredient%>"></td>
-          <td class="ingredient-amount"><input type="text" name="amount" value="<%=element.amount%>"></td>
-          <td class="ingredient-calories"><%= element.calories %></td>
-          <td class="ingredient-fat"><%= element.fat %></td>
-          <td class="ingredient-protein"><%= element.protein %></td>
-          <td class="ingredient-carbs"><%= element.carbs %></td>
-          <td class="ingredient-fiber"><%= element.fiber %></td>
-          <td class="ingredient-sugar"><%= element.sugar %></td>
+        <tr class = "ingredient-row">
+          <td class="ingredient-name <%=count%>"><%= element.ingredient %></td>
+          <input type="hidden" name="ingredient" value="<%= element.ingredient%>">
+          <td class="ingredient-amount <%=count%>"><input type="number" name="amount" value="<%=element.amount%>" onkeypress="runAmountListener(event)"></td>
+          <td class="ingredient-calories <%=count%>"><%= element.calories %></td>
+          <td class="ingredient-fat <%=count%>"><%= element.fat %></td>
+          <td class="ingredient-protein <%=count%>"><%= element.protein %></td>
+          <td class="ingredient-carbs <%=count%>"><%= element.carbs %></td>
+          <td class="ingredient-fiber <%=count%>"><%= element.fiber %></td>
+          <td class="ingredient-sugar <%=count%>"><%= element.sugar %></td>
           <td>
             <button type="submit" name="delete" value="<%= element.ingredient %>">
               <img src="https://www.drodd.com/images15/red-x11.jpeg" height="15">
             </button>
           </td>
         </tr>
+        <%count++;%>
       <%})%>
       <%}%>
         <tr>
           <td>TOTAL</td>
-          <td><%=amount%></td>
-          <td><%=calories%></td>
-          <td><%=fat.toFixed(0)%></td>
-          <td><%=protein.toFixed(0)%></td>
-          <td><%=carbs.toFixed(0)%></td>
-          <td><%=fiber.toFixed(0)%></td>
-          <td><%=sugar.toFixed(0)%></td>
+          <td class="total-amount"><%=amount%></td>
+          <td class="total-calories"><%=calories%></td>
+          <td class="total-fat"><%=fat.toFixed(0)%></td>
+          <td class="total-protein"><%=protein.toFixed(0)%></td>
+          <td class="total-carbs"><%=carbs.toFixed(0)%></td>
+          <td class="total-fiber"><%=fiber.toFixed(0)%></td>
+          <td class="total-sugar"><%=sugar.toFixed(0)%></td>
         </tr>
       </table>
       <input type="submit" value="Save Amount" name="update" formaction="/meal-update">
       </form>
     </main>
 
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script type="text/javascript" src="/js/app.js"></script>
 
   </body>
 </html>
