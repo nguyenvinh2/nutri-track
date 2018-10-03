@@ -1,5 +1,5 @@
 nav {
-  background-color: rgb(177, 177, 177);
+  background-color: rgb(68, 187, 66);
   height: 8vw;
 }
 
@@ -42,46 +42,58 @@ nav a:hover {
   margin-bottom: 8vw;
 }
 
-
-
 @media only screen and (min-width: 800px) {
   
-
-
   body{
-    background-color: purple;
-  }
+    background-color: lightblue;
+  } */
 }
 
-h1 {
+#about-us-h1 {
+  font-family: 'K2D', sans-serif;
   text-align: center;
   font-size: 7vw;
 }
 
-h2 {
-  outline: 2px solid orange;
+.about-info div {
+  margin: 65px;
+}
+
+.about-info h2 {
   margin-left: 4vw;
   font-size: 3vw;
   font-weight: bold;
 }
 
-p {
-  outline: 2px solid orange;
-  margin-left: 7vw;
-  margin-right: 7vw;
-  margin-bottom: 4vw;
+.about-info p {
+  width: 90%;
 }
 
-#jeff-image {
+.about-info img {
   float: left;
   margin-top: 1vw;
   margin-left: 4vw;
   width: 30%;
 }
 
-#joey-image {
-  float: left;
-  margin-top: 1vw;
-  margin-left: 4vw;
-  width: 25%;
+.get-started h1 {
+  text-align: center;
+  margin-bottom: 3vw;
+  font-weight: bold;
+  font-size: 5vw;
 }
+
+.get-started h2 {
+  margin-top: 4vw;
+  text-align: center;
+  margin-bottom: 3vw;
+  font-weight: bold;
+  font-size: 5vw;
+}
+
+ol {
+  margin-left: 5vw;
+  list-style: decimal;
+  margin-bottom: 4vw;
+}
+

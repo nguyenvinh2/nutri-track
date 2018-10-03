@@ -11,7 +11,7 @@
     
     <main>
       <section class="meal-edit">
-        <h1>Meal ID: <%=ingredients[0].name%></h1>
+        <h1><%=ingredients[0].name%></h1>
         <form action="/meals-edit" method="post">
           <input type="hidden" name="meal_id" value="<%= ingredients[0].id%>" required>
           <input type="submit" value="Edit Meal Properties" name="update">
@@ -37,16 +37,19 @@
       <%let sugar = 0;%>
       <form id="update-amount" action="/delete" method="post"> 
       <input type="hidden" name="meal_id" value="<%= ingredients[0].id%>" required>
+
+      <section class="table-scroll">
       <table class="ingredient-container">
         <tr>
-          <td class="ingredient-name">Ingredient</td>
-          <td class="ingredient-amount">Amount (g)</td>
-          <td class="ingredient-calories">Calories (kcal)</td>
-          <td class="ingredient-fat">Total Fat (g)</td>
-          <td class="ingredient-protein">Proteinb(g)</td>
-          <td class="ingredient-carbs">Carbohydrates (g)</td>
-          <td class="ingredient-fiber">Fiber (g)</td>
-          <td class="ingredient-sugar">sugar (g)</td>
+          <th class="ingredient-name">Ingredient</th>
+          <th class="ingredient-amount">Amount (g)</th>
+          <th class="ingredient-calories">Calories (kcal)</th>
+          <th class="ingredient-fat">Total Fat (g)</th>
+          <th class="ingredient-protein">Protein(g)</th>
+          <th class="ingredient-carbs">Carbs (g)</th>
+          <th class="ingredient-fiber">Fiber (g)</th>
+          <th class="ingredient-sugar">Sugar (g)</th>
+          <th class="ingredient-delete">Delete</th>
         </tr>
       <% if (ingredients[0].ingredient !==null) {%>
       <% ingredients.forEach(element => { %>
@@ -79,16 +82,17 @@
       <%})%>
       <%}%>
         <tr>
-          <td>TOTAL</td>
-          <td class="total-amount"><%=amount%></td>
-          <td class="total-calories"><%=calories%></td>
-          <td class="total-fat"><%=fat.toFixed(0)%></td>
-          <td class="total-protein"><%=protein.toFixed(0)%></td>
-          <td class="total-carbs"><%=carbs.toFixed(0)%></td>
-          <td class="total-fiber"><%=fiber.toFixed(0)%></td>
-          <td class="total-sugar"><%=sugar.toFixed(0)%></td>
+          <th>TOTAL</th>
+          <th class="total-amount"><%=amount%></th>
+          <th class="total-calories"><%=calories%></th>
+          <th class="total-fat"><%=fat.toFixed(0)%></th>
+          <th class="total-protein"><%=protein.toFixed(0)%></th>
+          <th class="total-carbs"><%=carbs.toFixed(0)%></th>
+          <th class="total-fiber"><%=fiber.toFixed(0)%></th>
+          <th class="total-sugar"><%=sugar.toFixed(0)%></th>
         </tr>
       </table>
+      </section>
       <input type="submit" value="Save Amount" name="update" formaction="/meal-update">
       </form>
     </main>

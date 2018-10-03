@@ -1,7 +1,15 @@
 <!DOCTYPE html>
 <html>
+  <head>
+    <%- include('../layout/head') %>
+    <title>Ingredient Search Results</title>
+  </head>
   <body>
-    <h2>Results!</h2>
+    <header>
+        <%- include('../layout/nav') %>
+    </header>
+    <main class="ingredients-results">
+    <h2>Search Results For: <%= search %></h2>
       <% ingredients.forEach(element => { %>
       <section class="create-view-container">
         <form id="add-ingredient" action="/add" method="post">
@@ -30,5 +38,6 @@
       <%})%>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script type="text/javascript" src="/js/app.js"></script>
+    </main>
   </body>
 </html>
