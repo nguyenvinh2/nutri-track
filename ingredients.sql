@@ -1,15 +1,15 @@
 DROP TABLE IF EXISTS ingredients;
 
 CREATE TABLE IF NOT EXISTS ingredients ( 
-  id SERIAL PRIMARY KEY, 
+  ingredient_id SERIAL PRIMARY KEY, 
   ndbno VARCHAR(255),
   ingredient text,
-  amount numeric(6,0),
-  calories numeric(6,2), 
-  fat numeric(6,2), 
-  protein numeric(6,2),
-  carbs numeric(6,2), 
-  fiber numeric(6,2), 
-  sugar numeric(6,2), 
+  amount numeric(19,0),
+  calories numeric(19,2), 
+  fat numeric(19,2), 
+  protein numeric(19,2),
+  carbs numeric(19,2), 
+  fiber numeric(19,2), 
+  sugar numeric(19,2), 
   meal_id INT
 );
