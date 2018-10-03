@@ -29,9 +29,10 @@
       <div>
           <h3><%= meal.name %></h3>
           <input type="hidden" name="id" value ="<%=meal.id%>">
-          
-            <input class="meal-image" type="image" src="<%=meal.image_url%>" alt="Submit">
-          
+          <input type="hidden" name="name" value ="<%=meal.name%>">
+          <input type="hidden" name="description" value ="<%=meal.desription%>">
+          <input class="meal-image" type="image" src="<%=meal.image_url%>" alt="Submit">
+
       </div>
     </form>
     <% }) %>
