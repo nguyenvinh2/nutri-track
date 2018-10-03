@@ -37,10 +37,33 @@ function deleteIngredients(request, response) {
     .then(() => {
       response.redirect(`/meals/${request.body.meal_id}`);
     })
+    .catch(handleError);
 }
 
 function updateIngredients(request, response) {
   console.log(request.body);
+  let SQL = `  UPDATE ingredients SET(calories, fat, protein, carbs, fiber, sugar, amount) = (calories*$1/amount, fat*$1/amount, protein*$1/amount, carbs*$1/amount, fiber*$1/amount, sugar*$1/amount, $1) WHERE meal_id = $2 AND ingredient = $3;`;
+  const amount = request.body.amount;
+  if (Array.isArray(amount)) {
+    for (let i = 0; i < request.body.amount.length; i++) {
+      let values = [request.body.amount[i], request.body.meal_id, request.body.ingredient[i]];
+      console.log(values);
+      client.query(SQL, values)
+        .then(() => {
+          if (i === request.body.amount.length - 1) {
+            response.redirect(`/meals/${request.body.meal_id}`);
+          }
+        })
+        .catch(handleError);
+    }
+  } else {
+    let values = [request.body.amount, request.body.meal_id, request.body.ingredient];
+    client.query(SQL, values)
+      .then(() => {
+        response.redirect(`/meals/${request.body.meal_id}`);
+      })
+      .catch(handleError);
+  }
 }
 
 
@@ -93,7 +116,7 @@ function searchFood(request, response) {
           const fiber = content.body.foods[0].food.nutrients[5].value;
           const sugar = content.body.foods[0].food.nutrients[6].value;
           const meal_id = request.body.meal_id;
-          const ingredientItem = new Ingredient(food.name, calories, fat, protein, carbs, fiber, sugar, meal_id);
+          const ingredientItem = new Ingredient(food.name, food.ndbno, calories, fat, protein, carbs, fiber, sugar, meal_id);
           foodList.push(ingredientItem);
           if (foodList.length === foodResponse.body.list.item.length) {
             response.render('pages/result', { ingredients: foodList });
@@ -104,8 +127,9 @@ function searchFood(request, response) {
     .catch(error => handleError(error, response));
 }
 
-function Ingredient(name, calories, fat, protein, carbs, fiber, sugar, meal) {
+function Ingredient(name, ndbno, calories, fat, protein, carbs, fiber, sugar, meal) {
   this.name = name;
+  this.ndbno = ndbno;
   this.amount = 100;
   this.calories = calories;
   this.fat = fat;
@@ -117,9 +141,9 @@ function Ingredient(name, calories, fat, protein, carbs, fiber, sugar, meal) {
 }
 
 function addIngredient(request, response) {
-  let { ingredient, calories, fat, protein, carbs, fiber, sugar, meal_id, amount} = request.body;
-  let SQL = 'INSERT INTO ingredients(ingredient, calories, fat, protein, carbs, fiber, sugar, meal_id, amount) SELECT $1, $2, $3, $4, $5, $6, $7, $8, $9 WHERE NOT EXISTS (SELECT * FROM ingredients WHERE ingredient=$1 AND meal_id=$8);';
-  let values = [ingredient, calories, fat, protein, carbs, fiber, sugar, meal_id, amount];
+  let { ingredient, calories, fat, protein, carbs, fiber, sugar, meal_id, amount, ndbno} = request.body;
+  let SQL = 'INSERT INTO ingredients(ingredient, calories, fat, protein, carbs, fiber, sugar, meal_id, amount, ndbno) SELECT $1, $2, $3, $4, $5, $6, $7, $8, $9, $10 WHERE NOT EXISTS (SELECT * FROM ingredients WHERE ingredient=$1 AND meal_id=$8);';
+  let values = [ingredient, calories, fat, protein, carbs, fiber, sugar, meal_id, amount, ndbno];
   return client.query(SQL, values)
     .then(response.redirect(`/meals/${request.body.meal_id}`))
     .catch(err => handleError(err, response));
@@ -129,13 +153,15 @@ function handleError(err, res) {
   res.render('pages/error', { error: err, response: res });
 }
 
-function addMeal(request) {
+function addMeal(request, response) {
+  console.log(request.body);
   let { name, description, image_url } = request.body;
   let SQL = `INSERT INTO meals (name, description, image_url) VALUES ($1, $2, $3);`;
   let values = [name, description, image_url];
 
-  return client.query(SQL, values);
-
+  return client.query(SQL, values)
+    .then(response.redirect(`/meals/${request.body.meal_id}`))
+    .catch(err => handleError(err, response));
 }
 
 app.listen(PORT, () => console.log(`Listening on ${PORT}`));
