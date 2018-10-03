@@ -33,7 +33,7 @@ app.post('/meals/:meal_id', searchFood);
 app.post('/add', addIngredient);
 app.post('/meal', addMeal);// <<<<<<<<<<<<<<<<<<< Jeff added
 app.post('/delete', deleteIngredients);
-app.post('/update', updateIngredients);
+app.post('/meal-update', updateIngredients);
 
 function editMeal(request, response) {
   let SQL = `SELECT * FROM meals WHERE id = $1`;
