@@ -149,9 +149,14 @@
 
 .ingredient-container th {
   font-weight: bold;
+  background-color: rgb(54, 154, 247);
 }
 
 .ingredient-amount input {
   text-align: center;
   max-width: 55px;
+}
+
+#update-amount input {
+  margin-bottom: 4vw;
 }

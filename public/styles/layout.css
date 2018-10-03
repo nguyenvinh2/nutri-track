@@ -1,5 +1,5 @@
 nav {
-  background-color: rgb(177, 177, 177);
+  background-color: rgb(68, 187, 66);
   height: 8vw;
 }
 
@@ -42,14 +42,12 @@ nav a:hover {
   margin-bottom: 8vw;
 }
 
-
-
-/* @media only screen and (min-width: 800px) { */
+@media only screen and (min-width: 800px) {
   
-  /* body{
-    background-color: purple;
+  body{
+    background-color: lightblue;
   } */
-/* } */
+}
 
 #about-us-h1 {
   font-family: 'K2D', sans-serif;
@@ -62,7 +60,6 @@ nav a:hover {
 }
 
 .about-info h2 {
-  outline: 2px dashed orange;
   margin-left: 4vw;
   font-size: 3vw;
   font-weight: bold;
@@ -70,7 +67,6 @@ nav a:hover {
 
 .about-info p {
   width: 90%;
-  outline: 2px dashed blue;
 }
 
 .about-info img {
@@ -98,5 +94,6 @@ nav a:hover {
 ol {
   margin-left: 5vw;
   list-style: decimal;
+  margin-bottom: 4vw;
 }
 
