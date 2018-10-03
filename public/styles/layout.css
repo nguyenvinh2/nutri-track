@@ -59,13 +59,29 @@ h1 {
 }
 
 h2 {
-  margin-left: 2vw;
+  outline: 2px solid orange;
+  margin-left: 4vw;
   font-size: 3vw;
   font-weight: bold;
 }
 
 p {
-  margin-left: 5vw;
-  margin-right: 5vw;
+  outline: 2px solid orange;
+  margin-left: 7vw;
+  margin-right: 7vw;
   margin-bottom: 4vw;
+}
+
+#jeff-image {
+  float: left;
+  margin-top: 1vw;
+  margin-left: 4vw;
+  width: 30%;
+}
+
+#joey-image {
+  float: left;
+  margin-top: 1vw;
+  margin-left: 4vw;
+  width: 25%;
 }
