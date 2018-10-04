@@ -90,8 +90,11 @@
   text-decoration: none;
   display: inline-block;
   font-size: 16px; 
-  width: 100%;
-  
+  width: 100%;  
+}
+
+.meal-form-container button:hover {
+  cursor: pointer;
 }
 
 /* Search Results page */
@@ -229,4 +232,391 @@ th.total-title {
 
 #update-amount input {
   margin-bottom: 4vw;
+}
+
+
+
+/* ABOUT US */
+#about-us-h1 {
+  font-family: 'K2D', sans-serif;
+  text-align: center;
+  font-size: 7vw;
+  margin-bottom: 10vw;
+}
+
+.about-info div {
+  margin-bottom: 10vw;
+}
+
+.about-info img {
+  height: 150px;
+  float: left;
+  margin-right: 4vw;
+  
+}
+
+.about-info h2 {
+  text-align: center;
+  text-decoration: underline;
+  margin-bottom: 5vw;
+}
+
+
+
+
+
+
+/* .about-info h2 {
+  text-align: center;
+  font-size: 3vw;
+  font-weight: bold;
+}
+
+.about-info p {
+  width: 90%;
+}
+
+.about-info img {
+  float: left;
+  margin-top: 1vw;
+  margin-left: 4vw;
+  width: 30%;
+} */
+
+/* HOW TO / GET STARTED */
+
+.get-started h1 {
+  text-align: center;
+  margin-bottom: 3vw;
+  font-weight: bold;
+  font-size: 5vw;
+}
+
+.get-started h2 {
+  margin-top: 4vw;
+  text-align: center;
+  margin-bottom: 3vw;
+  font-weight: bold;
+  font-size: 5vw;
+}
+
+ol {
+  margin-left: 5vw;
+  list-style: decimal;
+  margin-bottom: 4vw;
+}
+
+@media only screen and (min-width: 770px) {
+
+  /* INDEX */
+
+  .get-started-form {
+    display: flex;
+    justify-content: center;
+  }
+  
+  .get-started-button {
+    background-color: rgb(83, 145, 185);
+    border: none;
+    color: white;
+    /* padding: 15px 32px; */
+    padding: 20px 30px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin-top: 30px;
+  }
+  
+  .get-started-button:hover {
+    cursor: pointer;
+  }
+  
+  .page-header {
+    font-family: 'K2D', sans-serif;
+    margin-top: 100px;
+    margin-bottom: 50px;
+    text-align: center;
+    font-size: 50px;
+  }
+  
+  .saved-meals {
+    display: flex;
+    flex-flow: space-evenly;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  
+  .saved-meals div {
+    display: flex;
+    flex-direction: column;
+    height: 300px;
+    width: 300px;
+    /* outline: 1px solid black; */
+    margin: 0 3vw 6vw 3vw;
+    
+  }
+  
+  .saved-meals h3 {
+    margin-bottom: 20px;
+    text-align: center;
+    font-weight: bold;
+    font-size: 20px;
+  }
+  
+  .meal-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    overflow: hidden; 
+  }
+  
+
+  
+  /* MEAL CREATOR FORM */
+  .meal-form-container {
+    margin: 0 auto;
+    margin-top: 5vw;
+    height: 100vw;
+    width: 40vw;
+    display: flex;
+    flex-direction: column;
+    /* outline: 1px solid black; */
+  }
+  
+  .meal-form-container input {
+    margin-bottom: 3vw;
+    width: 100%;
+  }
+  
+  .meal-form-container textarea {
+    margin-bottom: 3vw;
+    resize: none;
+    width: 99.7%;
+    height: 20%;
+  }
+  
+  .meal-form-container button {
+    background-color: rgb(83, 145, 185);
+    border: none;
+    color: white;
+    padding: 20px 30px;
+    text-align: center;
+    text-decoration: none;
+    display: block;
+    margin: 0 auto;
+    font-size: 16px; 
+    width: 50%;
+    
+  }
+  .meal-form-container button:hover {
+    cursor: pointer;
+  }
+  
+  /* Search Results page */
+  
+  .ingredients-results {
+    margin-left: 13vw;
+  }
+  
+  .ingredients-results button {
+    margin-top: 2vw;
+    margin-bottom: 2vw;
+  }
+  
+  .ingredients-results h2 {
+    font-weight: bold;
+    font-size: 5vw;
+    margin-bottom: 10px;
+  }
+  
+  .ingredients-results ul li:first-child {
+    font-weight: bold;
+  }
+  .create-view-container {
+    border: solid;
+    margin-bottom: 5px;
+  }
+  
+  #add-ingredient {
+    margin: 4vw;
+  }
+  
+  /* Ingredients List page */
+  
+  .meal-edit {
+    margin-top: 80px;
+    margin-bottom: 25px;
+    border: solid;
+    background-color: white;
+    padding: 5px;
+  }
+  
+  .meal-edit h1 {
+
+    font-size: 30px;
+    font-weight: bold;
+    margin-bottom: 2vw;
+  }
+  .search {
+    padding: 5px;
+    margin-bottom: 25px;
+  }
+  
+  .search h2 {
+    font-size: 30px;
+    font-weight: bold;
+    margin-top: 80px;
+    margin-bottom: 20px;
+  }
+  
+  .search form {
+    margin-bottom: 2vw;
+  }
+  
+  .table-scroll {
+    overflow-x: scroll;
+    margin-bottom: 2vw;
+  }
+  
+  .ingredient-container, th, td {
+    border: 1px solid black;
+    border-collapse: collapse;
+    text-align: center;
+    vertical-align: middle;
+  }
+  
+  .ingredient-name {
+    text-align: left;
+    padding: 5px;
+    vertical-align: middle;
+  }
+  
+  .ingredient-amount {
+    text-align: center;
+    padding: 5px;
+  }
+  
+  .ingredient-calories {
+    padding: 5px;
+    vertical-align: middle;
+  }
+  
+  .ingredient-fat {
+    padding: 5px;
+    vertical-align: middle;
+  }
+  
+  .ingredient-protein {
+    padding: 5px;
+    vertical-align: middle;
+  }
+  
+  .ingredient-carbs {
+    padding: 5px;
+    vertical-align: middle;
+  }
+  
+  .ingredient-fiber {
+    padding: 5px;
+    vertical-align: middle;
+  }
+  
+  .ingredient-sugar {
+    padding: 5px;
+    vertical-align: middle;
+  }
+  
+  .ingredient-delete {
+    padding: 5px;
+    vertical-align: middle;
+  }
+  th.total-title {
+    padding: 5px;
+    text-align: left;
+    vertical-align: middle;
+  }
+  
+  .ingredient-container th {
+    font-weight: bold;
+    background-color: rgb(54, 154, 247);
+  }
+  
+  .ingredient-amount input {
+    position: relative;
+    text-align: center;
+    max-width: 60px;
+  }
+  
+  #update-amount input {
+    margin-bottom: 4vw;
+  }
+  
+  
+  
+  /* ABOUT US */
+  .about-info {
+    margin-left: 100px;
+    margin-right: 200px;
+  }
+  #about-us-h1 {
+    font-family: 'K2D', sans-serif;
+    text-align: center;
+    font-size: 75px;
+    margin-top: 100px;
+    margin-bottom: 80px;
+  }
+  
+  .about-info div {
+    margin-bottom: 10vw;
+  }
+  
+  .about-info img {
+    height: 150px;
+    float: left;
+    margin-right: 4vw;
+    
+  }
+  
+  .about-info h2 {
+    margin-left: 20px;
+    text-align: left;
+    font-weight: bold;
+    margin-bottom: 2vw;
+  }
+
+
+  
+  /* HOW TO / GET STARTED */
+  
+  .get-started {
+    margin-left: 20vw;
+    margin-right: 20vw;
+  }
+
+  .get-started h1 {
+    font-family: 'K2D', sans-serif;
+    margin-top: 100px;
+    margin-bottom: 50px;
+    text-align: center;
+    font-size: 50px;
+  }
+  
+  .get-started h2 {
+    font-family: 'K2D', sans-serif;
+    margin-top: 80px;
+    text-align: center;
+    margin-bottom: 20px;
+    font-weight: bold;
+    font-size: 40px;
+  }
+
+  .get-started p {
+    padding-left: 30px;
+    padding-right: 30px;
+  }
+  
+  ol {
+    list-style: none;    
+  } 
 }
