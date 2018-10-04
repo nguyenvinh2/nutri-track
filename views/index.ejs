@@ -30,8 +30,7 @@
           <input type="hidden" name="id" value ="<%=meal.id%>">
           <input type="hidden" name="name" value ="<%=meal.name%>">
           <input type="hidden" name="description" value ="<%=meal.desription%>">
-          <input class="meal-image" type="image" src="<%=meal.image_url%>" alt="Submit">
-
+          <input class="meal-image" type="image" src="<%=meal.image_url || "https://upload.wikimedia.org/wikipedia/commons/6/6d/Good_Food_Display_-_NCI_Visuals_Online.jpg" %>" alt="Submit">
       </div>
     </form>
     <% }) %>

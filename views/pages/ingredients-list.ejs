@@ -12,15 +12,17 @@
     <main>
       <section class="meal-edit">
         <h1><%=ingredients[0].name%></h1>
-        <form action="/meals-edit" method="post">
-          <input type="hidden" name="meal_id" value="<%= ingredients[0].id%>" required>
-          <input type="submit" value="Edit Meal Properties" name="update">
-          <input type="submit" value="Delete Meal" name="update" formaction="/meals-delete">
-        </form>
+        <p><%=ingredients[0].description%></p>
       </section>
+      <form action="/meals-edit" method="post">
+        <input type="hidden" name="meal_id" value="<%= ingredients[0].id%>" required>
+        <input type="submit" value="Edit Meal Properties" name="update">
+        <input type="submit" value="Delete Meal" name="update" formaction="/meals-delete">
+      </form>
       
       <section class="search">
-        <h2>Search Ingredients</h1>
+        <h2>Add Ingredients</h1>
+        <p>Enter an item in the Search Bar to search for an ingredient to add to the meal.</p><br>
         <form action="/meals/<%= ingredients[0].id%>" method="post">
           <input type="hidden" name="meal_id" value="<%= ingredients[0].id%>" required>
           <input type="text" name="search" placeholder="Enter a Food Item" required>
@@ -40,12 +42,12 @@
 
       <section class="table-scroll">
       <table class="ingredient-container">
-        <tr>
+        <tr class="header">
           <th class="ingredient-name">Ingredient</th>
-          <th class="ingredient-amount">Amount (g)</th>
+          <th class="ingredient-amount">Amount (g/ml)</th>
           <th class="ingredient-calories">Calories (kcal)</th>
           <th class="ingredient-fat">Total Fat (g)</th>
-          <th class="ingredient-protein">Protein(g)</th>
+          <th class="ingredient-protein">Protein (g)</th>
           <th class="ingredient-carbs">Carbs (g)</th>
           <th class="ingredient-fiber">Fiber (g)</th>
           <th class="ingredient-sugar">Sugar (g)</th>
@@ -61,11 +63,10 @@
         <%carbs += parseFloat(element.carbs)%>
         <%fiber += parseFloat(element.fiber)%>
         <%sugar += parseFloat(element.sugar)%>
-        
+        <input type="hidden" name="ingredient" value="<%= element.ingredient%>">
         <tr class = "ingredient-row">
-          <td class="ingredient-name <%=count%>"><%= element.ingredient %></td>
-          <input type="hidden" name="ingredient" value="<%= element.ingredient%>">
-          <td class="ingredient-amount <%=count%>"><input type="number" name="amount" value="<%=element.amount%>" onkeypress="runAmountListener(event)"></td>
+          <td class="ingredient-name <%=count%>"><a href="<%=`https://ndb.nal.usda.gov/ndb/foods/show/${element.ndbno.substring(1)}`%>" ><%= element.ingredient %></a></td>
+          <td class="ingredient-amount <%=count%>"><input type="number" name="amount" value="<%=element.amount%>" onkeypress="runAmountListener(event)"/></td>
           <td class="ingredient-calories <%=count%>"><%= element.calories %></td>
           <td class="ingredient-fat <%=count%>"><%= element.fat %></td>
           <td class="ingredient-protein <%=count%>"><%= element.protein %></td>
@@ -82,7 +83,7 @@
       <%})%>
       <%}%>
         <tr>
-          <th>TOTAL</th>
+          <th class="total-title">TOTAL</th>
           <th class="total-amount"><%=amount%></th>
           <th class="total-calories"><%=calories%></th>
           <th class="total-fat"><%=fat.toFixed(0)%></th>
@@ -90,6 +91,7 @@
           <th class="total-carbs"><%=carbs.toFixed(0)%></th>
           <th class="total-fiber"><%=fiber.toFixed(0)%></th>
           <th class="total-sugar"><%=sugar.toFixed(0)%></th>
+          <th></th>
         </tr>
       </table>
       </section>

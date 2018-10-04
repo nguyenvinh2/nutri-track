@@ -154,7 +154,7 @@ function meal(request, response) {// <<<<<<<<<<<<<<<<<<< Jeff added
 }
 
 function searchFood(request, response) {
-  const url = `https://api.nal.usda.gov/ndb/search/?format=json&q=${request.body.search}&ds=Standard%20Reference&sort=r&max=20&offset=0&api_key=${process.env.USDA_API_KEY}`;
+  const url = `https://api.nal.usda.gov/ndb/search/?format=json&q=${request.body.search}&ds=Standard%20Reference&sort=r&offset=0&api_key=${process.env.USDA_API_KEY}`;
 
   superagent.get(url)
     .then(foodResponse => {
