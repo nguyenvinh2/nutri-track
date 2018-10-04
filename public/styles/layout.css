@@ -20,11 +20,6 @@ nav ul li {
   color: black;
 }
 
-/* nav ul li:first-child {
-margin-right: 60vw;
-
-} */
-
 nav a {
   color: black;
   text-decoration: none;
@@ -42,58 +37,44 @@ nav a:hover {
   margin-bottom: 8vw;
 }
 
-@media only screen and (min-width: 800px) {
+@media only screen and (min-width: 770px) {
   
-  body{
-    background-color: lightblue;
+  nav {
+    height: 50px;
+  }
+  
+  /* nav ul {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    
+    
   } */
-}
-
-#about-us-h1 {
-  font-family: 'K2D', sans-serif;
-  text-align: center;
-  font-size: 7vw;
-}
-
-.about-info div {
-  margin: 65px;
-}
-
-.about-info h2 {
-  margin-left: 4vw;
-  font-size: 3vw;
-  font-weight: bold;
-}
-
-.about-info p {
-  width: 90%;
-}
-
-.about-info img {
-  float: left;
-  margin-top: 1vw;
-  margin-left: 4vw;
-  width: 30%;
-}
-
-.get-started h1 {
-  text-align: center;
-  margin-bottom: 3vw;
-  font-weight: bold;
-  font-size: 5vw;
-}
-
-.get-started h2 {
-  margin-top: 4vw;
-  text-align: center;
-  margin-bottom: 3vw;
-  font-weight: bold;
-  font-size: 5vw;
-}
-
-ol {
-  margin-left: 5vw;
-  list-style: decimal;
-  margin-bottom: 4vw;
+  
+  nav ul li {
+    flex-direction: row;
+    font-family: 'K2D', sans-serif;
+    font-size: 25px;
+    margin-top: 10px;
+    margin-right: 10px;
+    color: black;
+  }
+/*   
+  nav a {
+    color: black;
+    text-decoration: none;
+  } */
+  
+  /* nav a:hover {
+    text-decoration: underline;
+  } */
+  
+  .logo {
+    font-family: 'K2D', sans-serif;
+    font-size: 85px;
+    text-align: center;
+    margin-top: 20px;
+    margin-bottom: 20px;
+  }
 }
 
