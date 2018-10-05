@@ -244,42 +244,35 @@ th.total-title {
   margin-bottom: 10vw;
 }
 
-.about-info div {
-  margin-bottom: 10vw;
-}
-
 .about-info img {
-  height: 150px;
+  width: 120px;
   float: left;
-  margin-right: 4vw;
+  margin-right: 25px;
+  margin-bottom: 5px;
   
 }
 
+.vinh img {
+  margin-bottom: 20px;
+}
+
 .about-info h2 {
-  text-align: center;
-  text-decoration: underline;
-  margin-bottom: 5vw;
+  padding-top: 1px;
+  padding-bottom: 3px;
+  padding-left: 7px;
+  font-family: 'K2D', sans-serif;
+  text-align: left;
+  background-color: rgb(68, 187, 66);
+  margin-bottom: 10px;
+  margin-top: 10px;
 }
 
-/* can we delete belwo code that is commented out? */
-
-/* .about-info h2 {
-  text-align: center;
-  font-size: 3vw;
-  font-weight: bold;
+.vinh {
+  clear: both;
 }
-
-.about-info p {
-  width: 90%;
+.joey {
+  clear: both;
 }
-
-.about-info img {
-  float: left;
-  margin-top: 1vw;
-  margin-left: 4vw;
-  width: 30%;
-} */
-
 
 
 /* HOW TO / GET STARTED */
@@ -553,36 +546,47 @@ ol {
   
   
   /* ABOUT US */
-  .about-info {
-    margin-left: 100px;
-    margin-right: 200px;
-  }
   #about-us-h1 {
-    font-family: 'K2D', sans-serif;
-    text-align: center;
-    font-size: 75px;
-    margin-top: 100px;
-    margin-bottom: 80px;
+    font-size: 70px;
+    margin-top: 50px;
+    margin-bottom: 100px;
   }
-  
+
   .about-info div {
-    margin-bottom: 10vw;
+    margin-right: 17vw;
+    margin-left: 17vw;
   }
   
   .about-info img {
-    height: 150px;
+    width: 250px;
     float: left;
-    margin-right: 4vw;
+    margin-right: 25px;
+    margin-bottom: 20px;
     
   }
   
   .about-info h2 {
-    margin-left: 20px;
+    padding-top: 1px;
+    padding-bottom: 3px;
+    padding-left: 7px;
+    font-family: 'K2D', sans-serif;
     text-align: left;
-    font-weight: bold;
-    margin-bottom: 2vw;
+    /* background-color: rgb(68, 187, 66); */
+    margin-bottom: 10px;
+    margin-top: 10px;
   }
 
+  .jeff {
+    clear: both;
+  }
+  
+  .vinh {
+    clear: both;
+    
+  }
+  .joey {
+    clear: both;
+  }
 
   
   /* HOW TO / GET STARTED */
