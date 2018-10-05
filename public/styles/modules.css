@@ -224,15 +224,12 @@ th.total-title {
   background-color: rgb(54, 154, 247);
 }
 
-.ingredient-amount input {
-  position: relative;
+.ingredient-amount input {;
   text-align: center;
   max-width: 60px;
+  vertical-align: middle;
 }
 
-#update-amount input {
-  margin-bottom: 4vw;
-}
 
 
 
@@ -484,55 +481,56 @@ ol {
     border-collapse: collapse;
     text-align: center;
     vertical-align: middle;
+    padding: 15px;
   }
   
   .ingredient-name {
     text-align: left;
-    padding: 5px;
+    padding: 15px;
     vertical-align: middle;
   }
   
   .ingredient-amount {
     text-align: center;
-    padding: 5px;
+    padding: 15px;
   }
   
   .ingredient-calories {
-    padding: 5px;
+    padding: 15px;
     vertical-align: middle;
   }
   
   .ingredient-fat {
-    padding: 5px;
+    padding: 15px;
     vertical-align: middle;
   }
   
   .ingredient-protein {
-    padding: 5px;
+    padding: 15px;
     vertical-align: middle;
   }
   
   .ingredient-carbs {
-    padding: 5px;
+    padding: 15px;
     vertical-align: middle;
   }
   
   .ingredient-fiber {
-    padding: 5px;
+    padding: 15px;
     vertical-align: middle;
   }
   
   .ingredient-sugar {
-    padding: 5px;
+    padding: 15px;
     vertical-align: middle;
   }
   
   .ingredient-delete {
-    padding: 5px;
+    padding: 15px;
     vertical-align: middle;
   }
   th.total-title {
-    padding: 5px;
+    padding: 15px;
     text-align: left;
     vertical-align: middle;
   }
@@ -542,18 +540,12 @@ ol {
     background-color: rgb(54, 154, 247);
   }
   
-  .ingredient-amount input {
-    position: relative;
-    text-align: center;
+  .ingredient-amount input{
     max-width: 60px;
+    vertical-align: middle;
+    margin-bottom: 0;
   }
-  
-  #update-amount input {
-    margin-bottom: 4vw;
-  }
-  
-  
-  
+
   /* ABOUT US */
   .about-info {
     margin-left: 100px;
