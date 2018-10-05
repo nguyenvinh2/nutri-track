@@ -62,7 +62,7 @@
 .meal-form-container {
   margin: 0 auto;
   margin-top: 5vw;
-  height: 100vw;
+  /*height: 50vw;*/
   width: 60vw;
   display: flex;
   flex-direction: column;
@@ -349,7 +349,6 @@ ol {
   .meal-form-container {
     margin: 0 auto;
     margin-top: 5vw;
-    height: 100vw;
     width: 40vw;
     display: flex;
     flex-direction: column;
@@ -586,4 +585,8 @@ ol {
   ol {
     list-style: none;    
   } 
+}
+
+#update-amount {
+  margin-bottom: 5vw;
 }
