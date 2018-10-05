@@ -5,10 +5,7 @@ require('dotenv').config();
 const express = require('express');
 const superagent = require('superagent');
 const pg = require('pg');
-const methodOverride = require('method-override');
-
 const PORT = process.env.PORT || 3000;
-
 const app = express();
 const client = new pg.Client(process.env.DATABASE_URL);
 
@@ -21,7 +18,7 @@ app.use(express.static('public'));
 app.set('view engine', 'ejs');
 
 app.get('/', getMeals);
-app.get('/new-meal', meal);// <<<<<<<<<<<<<<<<<<< Jeff added
+app.get('/new-meal', meal);
 app.get('/meals/:meal_id', buildMeal);
 app.get('/about-us', renderAboutUs);
 app.get('/get-started', renderGetStarted);
@@ -31,7 +28,7 @@ app.post('/meals-edit', editMeal);
 app.post('/meals-delete', deleteMeal);
 app.post('/meals/:meal_id', searchFood);
 app.post('/add', addIngredient);
-app.post('/meal', addMeal);// <<<<<<<<<<<<<<<<<<< Jeff added
+app.post('/meal', addMeal);
 app.post('/delete', deleteIngredients);
 app.post('/meal-update', updateIngredients);
 
@@ -57,7 +54,6 @@ function saveMealEdits(request, response) {
 
 }
 
-
 function deleteMeal(request, response) {
   console.log(request.body);
   let SQL = `DELETE FROM ingredients WHERE meal_id = $1;`;
@@ -74,7 +70,6 @@ function deleteMeal(request, response) {
     .catch(handleError);
 }
 
-
 function renderAboutUs(request, response) {// <<<<<<<< JEFF ADDED
   response.render('pages/about-us');
 }
@@ -82,7 +77,6 @@ function renderAboutUs(request, response) {// <<<<<<<< JEFF ADDED
 function renderGetStarted(request, response) {
   response.render('pages/how-to');
 }
-
 
 function deleteIngredients(request, response) {
   let SQL = `DELETE FROM ingredients WHERE ingredient = $1 AND meal_id = $2;`;
@@ -120,8 +114,6 @@ function updateIngredients(request, response) {
   }
 }
 
-
-
 function buildMeal(request, response) {
   let SQL = `SELECT * FROM ingredients RIGHT JOIN meals ON meals.id = ingredients.meal_id WHERE meals.id = $1;`;
   let values = [request.params.meal_id];
@@ -135,7 +127,6 @@ function buildMeal(request, response) {
     .catch(handleError);
 }
 
-//SET LANDING PAGE
 function getMeals(request, response) {
 
   let SQL = `SELECT * FROM meals;`;
@@ -148,13 +139,12 @@ function getMeals(request, response) {
 
 }
 
-
 function meal(request, response) {// <<<<<<<<<<<<<<<<<<< Jeff added
   response.render('pages/new-meal');
 }
 
 function searchFood(request, response) {
-  const url = `https://api.nal.usda.gov/ndb/search/?format=json&q=${request.body.search}&ds=Standard%20Reference&sort=r&offset=0&api_key=${process.env.USDA_API_KEY}`;
+  const url = `https://api.nal.usda.gov/ndb/search/?format=json&q=${request.body.search}&ds=Standard%20Reference&sort=r&max=40&offset=0&api_key=${process.env.USDA_API_KEY}`;
 
   superagent.get(url)
     .then(foodResponse => {

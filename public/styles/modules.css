@@ -1,3 +1,5 @@
+
+
 .get-started-form {
   display: flex;
   justify-content: center;
@@ -7,7 +9,6 @@
   background-color: rgb(83, 145, 185);
   border: none;
   color: white;
-  /* padding: 15px 32px; */
   padding: 3.5vw 6vw;
   text-align: center;
   text-decoration: none;
@@ -20,7 +21,7 @@
 }
 
 .page-header {
-  margin-top: 10vw;
+  margin-top: 50px;
   margin-bottom: 5vw;
   text-align: center;
   font-size: 4vw;
@@ -39,7 +40,6 @@
   flex-direction: column;
   height: 30vw;
   width: 30vw;
-  /* outline: 1px solid black; */
   margin: 0 3vw 6vw 3vw;
   
 }
@@ -62,11 +62,10 @@
 .meal-form-container {
   margin: 0 auto;
   margin-top: 5vw;
-  height: 100vw;
+  /*height: 50vw;*/
   width: 60vw;
   display: flex;
   flex-direction: column;
-  /* outline: 1px solid black; */
 }
 
 .meal-form-container input {
@@ -224,15 +223,12 @@ th.total-title {
   background-color: rgb(128, 193, 253);
 }
 
-.ingredient-amount input {
-  position: relative;
+.ingredient-amount input {;
   text-align: center;
   max-width: 60px;
+  vertical-align: middle;
 }
 
-#update-amount input {
-  margin-bottom: 4vw;
-}
 
 
 
@@ -260,29 +256,6 @@ th.total-title {
   text-decoration: underline;
   margin-bottom: 5vw;
 }
-
-/* can we delete belwo code that is commented out? */
-
-/* .about-info h2 {
-  text-align: center;
-  font-size: 3vw;
-  font-weight: bold;
-}
-
-.about-info p {
-  width: 90%;
-}
-
-.about-info img {
-  float: left;
-  margin-top: 1vw;
-  margin-left: 4vw;
-  width: 30%;
-} */
-
-
-
-/* HOW TO / GET STARTED */
 
 .get-started h1 {
   text-align: center;
@@ -332,7 +305,7 @@ ol {
   
   .page-header {
     font-family: 'K2D', sans-serif;
-    margin-top: 100px;
+    margin-top: 50px;
     margin-bottom: 50px;
     text-align: center;
     font-size: 50px;
@@ -375,7 +348,6 @@ ol {
   .meal-form-container {
     margin: 0 auto;
     margin-top: 5vw;
-    height: 100vw;
     width: 40vw;
     display: flex;
     flex-direction: column;
@@ -482,55 +454,56 @@ ol {
     border-collapse: collapse;
     text-align: center;
     vertical-align: middle;
+    padding: 15px;
   }
   
   .ingredient-name {
     text-align: left;
-    padding: 5px;
+    padding: 15px;
     vertical-align: middle;
   }
   
   .ingredient-amount {
     text-align: center;
-    padding: 5px;
+    padding: 15px;
   }
   
   .ingredient-calories {
-    padding: 5px;
+    padding: 15px;
     vertical-align: middle;
   }
   
   .ingredient-fat {
-    padding: 5px;
+    padding: 15px;
     vertical-align: middle;
   }
   
   .ingredient-protein {
-    padding: 5px;
+    padding: 15px;
     vertical-align: middle;
   }
   
   .ingredient-carbs {
-    padding: 5px;
+    padding: 15px;
     vertical-align: middle;
   }
   
   .ingredient-fiber {
-    padding: 5px;
+    padding: 15px;
     vertical-align: middle;
   }
   
   .ingredient-sugar {
-    padding: 5px;
+    padding: 15px;
     vertical-align: middle;
   }
   
   .ingredient-delete {
-    padding: 5px;
+    padding: 15px;
     vertical-align: middle;
   }
   th.total-title {
-    padding: 5px;
+    padding: 15px;
     text-align: left;
     vertical-align: middle;
   }
@@ -540,18 +513,12 @@ ol {
     background-color: rgb(128, 193, 253);
   }
   
-  .ingredient-amount input {
-    position: relative;
-    text-align: center;
+  .ingredient-amount input{
     max-width: 60px;
+    vertical-align: middle;
+    margin-bottom: 0;
   }
-  
-  #update-amount input {
-    margin-bottom: 4vw;
-  }
-  
-  
-  
+
   /* ABOUT US */
   .about-info {
     margin-left: 100px;
@@ -617,4 +584,8 @@ ol {
   ol {
     list-style: none;    
   } 
+}
+
+#update-amount {
+  margin-bottom: 5vw;
 }
