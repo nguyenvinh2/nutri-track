@@ -37,44 +37,43 @@ nav a:hover {
   margin-bottom: 8vw;
 }
 
-@media only screen and (min-width: 770px) {
-  
-  nav {
-    height: 50px;
-  }
-  
-  /* nav ul {
-    display: flex;
-    justify-content: space-evenly;
-    align-items: center;
-    
-    
-  } */
-  
-  nav ul li {
-    flex-direction: row;
-    font-family: 'K2D', sans-serif;
-    font-size: 25px;
-    margin-top: 10px;
-    margin-right: 10px;
-    color: black;
-  }
-/*   
-  nav a {
-    color: black;
-    text-decoration: none;
-  } */
-  
-  /* nav a:hover {
-    text-decoration: underline;
-  } */
-  
-  .logo {
-    font-family: 'K2D', sans-serif;
-    font-size: 85px;
-    text-align: center;
-    margin-top: 20px;
-    margin-bottom: 20px;
-  }
+#descriptive {
+  font-family: 'K2D', sans-serif;
+  font-size: 3vw;
+  text-align: center;
+  margin-top: 5vw;
+  margin-bottom: 8vw;
 }
+
+  @media only screen and (min-width: 770px) {
+
+    nav {
+      height: 50px;
+    }
+
+      nav ul li {
+        flex-direction: row;
+        font-family: 'K2D', sans-serif;
+        font-size: 25px;
+        margin-top: 10px;
+        margin-right: 10px;
+        color: black;
+      }
+
+    .logo {
+      font-family: 'K2D', sans-serif;
+      font-size: 85px;
+      text-align: center;
+      margin-top: 20px;
+      margin-bottom: 20px;
+    }
+
+    #descriptive {
+      font-family: 'K2D', sans-serif;
+      font-size: 30px;
+      text-align: center;
+      margin-top: 5px;
+      margin-bottom: 5px;
+    }
+  }
 

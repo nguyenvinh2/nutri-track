@@ -1,3 +1,5 @@
+
+
 .get-started-form {
   display: flex;
   justify-content: center;
@@ -7,7 +9,6 @@
   background-color: rgb(83, 145, 185);
   border: none;
   color: white;
-  /* padding: 15px 32px; */
   padding: 3.5vw 6vw;
   text-align: center;
   text-decoration: none;
@@ -39,7 +40,6 @@
   flex-direction: column;
   height: 30vw;
   width: 30vw;
-  /* outline: 1px solid black; */
   margin: 0 3vw 6vw 3vw;
   
 }
@@ -66,7 +66,6 @@
   width: 60vw;
   display: flex;
   flex-direction: column;
-  /* outline: 1px solid black; */
 }
 
 .meal-form-container input {
@@ -257,30 +256,6 @@ th.total-title {
   text-decoration: underline;
   margin-bottom: 5vw;
 }
-
-
-
-
-
-
-/* .about-info h2 {
-  text-align: center;
-  font-size: 3vw;
-  font-weight: bold;
-}
-
-.about-info p {
-  width: 90%;
-}
-
-.about-info img {
-  float: left;
-  margin-top: 1vw;
-  margin-left: 4vw;
-  width: 30%;
-} */
-
-/* HOW TO / GET STARTED */
 
 .get-started h1 {
   text-align: center;
