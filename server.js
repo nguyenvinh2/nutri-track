@@ -175,7 +175,7 @@ function searchFood(request, response) {
             } else if (object.name === 'Sugars, total') {
               sugar = object.value;
             }
-            });
+          });
 
           const meal_id = request.body.meal_id;
 
