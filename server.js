@@ -153,13 +153,32 @@ function searchFood(request, response) {
         const item_url = `https://api.nal.usda.gov/ndb/V2/reports?ndbno=${food.ndbno}&type=b&format=json&api_key=${process.env.USDA_API_KEY}`;
 
         superagent.get(item_url).then(content => {
-          const calories = content.body.foods[0].food.nutrients[1].value;
-          const protein = content.body.foods[0].food.nutrients[3].value;
-          const fat = content.body.foods[0].food.nutrients[2].value;
-          const carbs = content.body.foods[0].food.nutrients[4].value;
-          const fiber = content.body.foods[0].food.nutrients[5].value;
-          const sugar = content.body.foods[0].food.nutrients[6].value;
+
+          let calories = 0;
+          let protein = 0;
+          let fat = 0;
+          let carbs = 0;
+          let fiber = 0;
+          let sugar = 0;
+         
+          content.body.foods[0].food.nutrients.forEach(object => {
+            if (object.name === 'Energy') {
+              calories = object.value;
+            } else if (object.name === 'Protein') {
+              protein = object.value;
+            } else if (object.name === 'Total lipid (fat)') {
+              fat = object.value;
+            } else if (object.name === 'Carbohydrate, by difference') {
+              carbs = object.value;
+            } else if (object.name === 'Fiber, total dietary') {
+              fiber = object.value;
+            } else if (object.name === 'Sugars, total') {
+              sugar = object.value;
+            }
+          });
+
           const meal_id = request.body.meal_id;
+
           const ingredientItem = new Ingredient(food.name, food.ndbno, calories, fat, protein, carbs, fiber, sugar, meal_id);
           foodList.push(ingredientItem);
           if (foodList.length === foodResponse.body.list.item.length) {
