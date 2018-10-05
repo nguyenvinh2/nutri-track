@@ -1,5 +1,3 @@
-
-
 .get-started-form {
   display: flex;
   justify-content: center;
@@ -62,7 +60,6 @@
 .meal-form-container {
   margin: 0 auto;
   margin-top: 5vw;
-  /*height: 50vw;*/
   width: 60vw;
   display: flex;
   flex-direction: column;
@@ -223,7 +220,7 @@ th.total-title {
   background-color: rgb(128, 193, 253);
 }
 
-.ingredient-amount input {;
+.ingredient-amount input {
   text-align: center;
   max-width: 60px;
   vertical-align: middle;
@@ -240,22 +237,38 @@ th.total-title {
   margin-bottom: 10vw;
 }
 
-.about-info div {
-  margin-bottom: 10vw;
-}
-
 .about-info img {
-  height: 150px;
+  width: 120px;
   float: left;
-  margin-right: 4vw;
+  margin-right: 25px;
+  margin-bottom: 5px;
   
 }
 
-.about-info h2 {
-  text-align: center;
-  text-decoration: underline;
-  margin-bottom: 5vw;
+.vinh img {
+  margin-bottom: 20px;
 }
+
+.about-info h2 {
+  padding-top: 1px;
+  padding-bottom: 3px;
+  padding-left: 7px;
+  font-family: 'K2D', sans-serif;
+  text-align: left;
+  background-color: rgb(68, 187, 66);
+  margin-bottom: 10px;
+  margin-top: 10px;
+}
+
+.vinh {
+  clear: both;
+}
+.joey {
+  clear: both;
+}
+
+
+/* HOW TO / GET STARTED */
 
 .get-started h1 {
   text-align: center;
@@ -290,7 +303,6 @@ ol {
     background-color: rgb(83, 145, 185);
     border: none;
     color: white;
-    /* padding: 15px 32px; */
     padding: 20px 30px;
     text-align: center;
     text-decoration: none;
@@ -323,7 +335,6 @@ ol {
     flex-direction: column;
     height: 300px;
     width: 300px;
-    /* outline: 1px solid black; */
     margin: 0 3vw 6vw 3vw;
     
   }
@@ -351,7 +362,6 @@ ol {
     width: 40vw;
     display: flex;
     flex-direction: column;
-    /* outline: 1px solid black; */
   }
   
   .meal-form-container input {
@@ -520,36 +530,46 @@ ol {
   }
 
   /* ABOUT US */
-  .about-info {
-    margin-left: 100px;
-    margin-right: 200px;
-  }
   #about-us-h1 {
-    font-family: 'K2D', sans-serif;
-    text-align: center;
-    font-size: 75px;
-    margin-top: 100px;
-    margin-bottom: 80px;
+    font-size: 70px;
+    margin-top: 50px;
+    margin-bottom: 100px;
   }
-  
+
   .about-info div {
-    margin-bottom: 10vw;
+    margin-right: 17vw;
+    margin-left: 17vw;
   }
   
   .about-info img {
-    height: 150px;
+    width: 250px;
     float: left;
-    margin-right: 4vw;
+    margin-right: 25px;
+    margin-bottom: 20px;
     
   }
   
   .about-info h2 {
-    margin-left: 20px;
+    padding-top: 1px;
+    padding-bottom: 3px;
+    padding-left: 7px;
+    font-family: 'K2D', sans-serif;
     text-align: left;
-    font-weight: bold;
-    margin-bottom: 2vw;
+    margin-bottom: 10px;
+    margin-top: 10px;
   }
 
+  .jeff {
+    clear: both;
+  }
+  
+  .vinh {
+    clear: both;
+    
+  }
+  .joey {
+    clear: both;
+  }
 
   
   /* HOW TO / GET STARTED */
