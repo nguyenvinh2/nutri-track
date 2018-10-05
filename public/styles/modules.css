@@ -220,7 +220,7 @@ th.total-title {
 
 .ingredient-container th {
   font-weight: bold;
-  background-color: rgb(54, 154, 247);
+  background-color: rgb(128, 193, 253);
 }
 
 .ingredient-amount input {;
@@ -273,8 +273,7 @@ th.total-title {
 }
 
 ol {
-  margin-left: 5vw;
-  list-style: decimal;
+  list-style: none;
   margin-bottom: 4vw;
 }
 
@@ -397,7 +396,7 @@ ol {
   
   .ingredients-results h2 {
     font-weight: bold;
-    font-size: 5vw;
+    font-size: 30px;
     margin-bottom: 10px;
   }
   
@@ -511,7 +510,7 @@ ol {
   
   .ingredient-container th {
     font-weight: bold;
-    background-color: rgb(54, 154, 247);
+    background-color: rgb(128, 193, 253);
   }
   
   .ingredient-amount input{
