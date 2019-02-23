@@ -1,7 +1,7 @@
 # nutri-track
 Meal Nutritional Content Tracker
 
-#Description
+# Description
 
 This web application queries the USDA Food Composition Database to obtain ingredient nutritional content to allow the user to tabulate meal nutritional data.
 
